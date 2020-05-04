@@ -1,29 +1,22 @@
+import portfolioBlogStyled from "../resources/portfolio-blog-styled.png";
+import todolistRedux from "../resources/todolist-redux.png";
+
 export const projects = [
   {
-    title: "Project #1",
-    demo: "https://github.com/PTR-KLK/portfolio-blog-styled",
+    title: "Portfolio-blog-styled",
+    demo: "https://ptr-klk.github.io/portfolio-blog-styled/",
     repo: "https://github.com/PTR-KLK/portfolio-blog-styled",
-    image: "https://via.placeholder.com/1600x900?text=Project+image",
+    image: portfolioBlogStyled,
     imageAlt: "project dsecription",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio velit perferendis ut itaque, quasi laudantium voluptate laboriosam nobis nam repudiandae explicabo quaerat deleniti aliquid fugit in quo molestiae maiores totam.",
+      "Szablon strony portfolio zbudowany przy pomocy create-react-app. Do styli wykorzystałem podejście CSS-in-JS zrealizowane przy pomocy biblioteki styled-components.",
   },
   {
-    title: "Project #2",
-    demo: "https://github.com/PTR-KLK/portfolio-blog-styled",
-    repo: "https://github.com/PTR-KLK/portfolio-blog-styled",
-    image: "https://via.placeholder.com/1600x900?text=Project+image",
+    title: "Todolist-redux",
+    repo: "https://github.com/PTR-KLK/todolist-redux",
+    image: todolistRedux,
     imageAlt: "project dsecription",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio velit perferendis ut itaque, quasi laudantium voluptate laboriosam nobis nam repudiandae explicabo quaerat deleniti aliquid fugit in quo molestiae maiores totam.",
-  },
-  {
-    title: "Project #3",
-    demo: "https://github.com/PTR-KLK/portfolio-blog-styled",
-    repo: "https://github.com/PTR-KLK/portfolio-blog-styled",
-    image: "https://via.placeholder.com/1600x900?text=Project+image",
-    imageAlt: "project dsecription",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio velit perferendis ut itaque, quasi laudantium voluptate laboriosam nobis nam repudiandae explicabo quaerat deleniti aliquid fugit in quo molestiae maiores totam.",
+      "Aplikacja todo stworzona przy pomocy create-react-app, biblioteki react-redux i wykorzystująca Fetch API do komunikacji z bazą danych, trzymaną na Firebase.",
   },
 ];

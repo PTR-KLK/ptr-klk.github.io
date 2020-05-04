@@ -3,7 +3,7 @@ import {
   AboutContainer,
   AboutHeader,
   AboutSubheader,
-  AboutParagraph,
+  AboutDescription,
   AboutLinks,
 } from "../about/about.style";
 import { faLinkedin, faGithubSquare } from "@fortawesome/free-brands-svg-icons";
@@ -16,9 +16,9 @@ function About() {
     <AboutContainer>
       <AboutHeader>{about.header}</AboutHeader>
       <AboutSubheader>{about.subheader}</AboutSubheader>
-      <AboutParagraph>
-        {about.description}
-      </AboutParagraph>
+      <AboutDescription>
+        {about.description.split('\n').map(e => <p>{e}</p>)}
+      </AboutDescription>
       <AboutLinks>
         <a
           href={about.linkedin}

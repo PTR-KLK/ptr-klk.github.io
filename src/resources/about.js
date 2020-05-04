@@ -1,9 +1,9 @@
 export const about = {
-      header: "John Doe",
-      subheader: "Some description",
-      linkedin: "https://github.com/PTR-KLK/portfolio-blog-styled",
-      github: "https://github.com/PTR-KLK/portfolio-blog-styled",
-      mail: "https://github.com/PTR-KLK/portfolio-blog-styled",
+      header: "Piotr Kielak",
+      subheader: "Junior Frontend Developer",
+      linkedin: "https://www.linkedin.com/in/piotr-kielak",
+      github: "https://github.com/PTR-KLK",
+      mail: "mailto:p7rk1k@gmail.com",
       description:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio velit perferendis ut itaque, quasi laudantium voluptate laboriosam nobis nam repudiandae explicabo quaerat deleniti aliquid fugit in quo molestiae maiores totam.",
+        "Jestem na początku swojej drogi w świecie web developmentu. W tej ścieżce rozwoju zainteresowała mnie możliwość uczestniczenia w kształtowaniu przestrzeni wirtualnej, w której wiele osób spędza swój czas i której wpływy widać także w świecie rzeczywistym - co może pomagać nam w codziennych zajęciach, a także zbliżać do siebie ludzi.\n W mojej karierze zawodowej zajmowałem się wcześniej wydrukami 3D na zamówienie. Byłem odpowiedzialny za obsługę sprzętu i wykonywanie zamówionych projektów przy użyciu oprogramowania do modelowania przestrzennego.\n Gdy zepsuje mi się jakiś przedmiot, staram się naprawić, zanim go wyrzucę i kupię nowy. Majsterkowanie sprawia mi frajdę.",
 };

@@ -10,8 +10,8 @@ import Project from "../project/project.component";
 function Projects() {
   return (
     <ProjectsContainer>
-      <ProjectsHeader>Projects</ProjectsHeader>
-      <ProjectsSubheader>Recent work</ProjectsSubheader>
+      <ProjectsHeader>Portfolio</ProjectsHeader>
+      <ProjectsSubheader>JS/React</ProjectsSubheader>
       <hr style={{ color: "#333" }}></hr>
       {projects.map((e) => {
         return (

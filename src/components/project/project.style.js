@@ -30,6 +30,12 @@ export const ProjectLinks = styled.nav`
     & > * {
         padding: 0 0 0 0.5em ;
     }
+
+    @media (max-width: 425px) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
 `;
 
 export const ProjectSummary = styled.summary`
@@ -63,7 +69,8 @@ export const ProjectParagraph = styled.p`
 
 export const ProjectImg = styled.img`
    width: 80%;
-   padding: 0 0 1em 0;
+   margin: 0 0 1em 0;
+   border: 1px solid #333;
 
    @media (min-width: 769px) {
     width: 45%;

@@ -8,7 +8,7 @@ import {
   NavMenuBtn,
   NavFooter,
 } from "./navbar.style";
-import Me from "../../resources/me.png";
+import Me from "../../resources/me.jpg";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -22,24 +22,32 @@ function Navbar() {
   return (
     <NavContainer>
       <NavImage src={Me} alt="Me" />
-      <NavTitle>Site Title</NavTitle>
+      <NavTitle>PTR-KLK</NavTitle>
 
       <NavMenuBtn onClick={onVisibilityChange}>
         <FontAwesomeIcon size="2x" icon={faBars} color="#fff" />
       </NavMenuBtn>
       <NavMenu isVisible={menuVisible}>
-        <NavMenuItem onClick={onVisibilityChange} to="/portfolio-blog-styled/">
-          About
+        <NavMenuItem onClick={onVisibilityChange} to="/">
+          O mnie
         </NavMenuItem>
         <NavMenuItem
           onClick={onVisibilityChange}
-          to="/portfolio-blog-styled/projects"
+          to="/projects"
         >
-          Projects
+          Portfolio
         </NavMenuItem>
       </NavMenu>
       <NavFooter>
         <hr></hr>
+        <a
+          href="https://github.com/PTR-KLK/portfolio-blog-styled"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          portfolio-blog-styled
+        </a>
+        <br/>
         by{" "}
         <a
           href="https://github.com/PTR-KLK"
@@ -47,14 +55,6 @@ function Navbar() {
           rel="noopener noreferrer"
         >
           PTR-KLK
-        </a>
-        <br/>
-        <a
-          href="https://github.com/PTR-KLK/portfolio-blog-styled"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          portfolio-blog-styled
         </a>
       </NavFooter>
     </NavContainer>

@@ -31,13 +31,13 @@ function Project(props) {
         >
           <FontAwesomeIcon size="3x" icon={faGithubSquare} color="#333" />
         </a>
-        <a
+        { props.demo ? (<a
           href={props.demo}
           target="_blank"
           rel="noopener noreferrer"
         >
           <FontAwesomeIcon size="3x" icon={faWindowMaximize} color="#333" />
-        </a>
+        </a>): null}
         </ProjectLinks>
       </ProjectHeader>
       <ProjectSummary isOpen={isAccordionOpen}>

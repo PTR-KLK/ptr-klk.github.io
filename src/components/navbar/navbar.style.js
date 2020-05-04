@@ -47,6 +47,10 @@ export const NavTitle = styled.h2`
     margin: 0;
     font-size: 2em;
     text-align: center;
+
+    @media (max-width: 425px) {
+        font-weight: normal;
+    }
 `;
 
 export const NavMenu = styled.nav`

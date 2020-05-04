@@ -4,10 +4,10 @@ export const AboutContainer = styled.section`
     display: flex;
     flex-wrap: wrap;
     align-content: center;
-    height: 100vh;
-    padding: 1em;
+    padding: 4em 1em 1em;
 
     @media (min-width: 426px) {
+        height: 100vh;
         padding: 4em;
     }
 `;
@@ -24,7 +24,7 @@ export const AboutSubheader = styled.h2`
     padding: 0 0 0.25em 0;
 `;
 
-export const AboutParagraph = styled.p`
+export const AboutDescription = styled.article`
     width: 100%;
     margin: 0;
     padding: 0.25em 0em;
