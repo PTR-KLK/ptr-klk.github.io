@@ -22,7 +22,7 @@ function Navbar() {
   return (
     <NavContainer>
       <NavImage src={Me} alt="Me" />
-      <NavTitle>PTR-KLK</NavTitle>
+      <NavTitle>PTR KLK</NavTitle>
 
       <NavMenuBtn onClick={onVisibilityChange}>
         <FontAwesomeIcon size="2x" icon={faBars} color="#fff" />
@@ -40,14 +40,6 @@ function Navbar() {
       </NavMenu>
       <NavFooter>
         <hr></hr>
-        <a
-          href="https://github.com/PTR-KLK/portfolio-blog-styled"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          portfolio-blog-styled
-        </a>
-        <br/>
         by{" "}
         <a
           href="https://github.com/PTR-KLK"
@@ -55,6 +47,14 @@ function Navbar() {
           rel="noopener noreferrer"
         >
           PTR-KLK
+        </a>
+        <br/>
+        <a
+          href="https://github.com/PTR-KLK/portfolio-blog-styled"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          portfolio-blog-styled
         </a>
       </NavFooter>
     </NavContainer>
