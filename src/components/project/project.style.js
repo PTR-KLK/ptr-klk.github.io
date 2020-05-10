@@ -4,14 +4,17 @@ import { colors } from '../../resources/colors';
 
 export const ProjectContainer = styled.section`
     margin: 1em 0;
+    padding: 0 1em;
     width: 100%;
     display: flex;
     flex-direction: column;
     color: ${colors.primaryTextLight};
     background: ${colors.primary};
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 0.75em;
 
     @media (min-width: 1024px) {
+        padding: 1em 0;
         flex-direction: row;
     }
 
@@ -37,10 +40,12 @@ export const ProjectSummary = styled.summary`
     align-items: center;
     width: 100%;
     margin: 0;
-    padding: 1em;
+    padding: 1em 0;
     order: 2;
 
     @media (min-width: 1024px) {
+        margin: 0 1em;
+        padding: 0;
         width: 50%;
         justify-content: center;
     }
@@ -48,21 +53,22 @@ export const ProjectSummary = styled.summary`
 `;
 
 export const ProjectParagraph = styled.p`
-    margin: 0;
+    margin: 1em 0;
     text-align: justify;
-    padding: 1em 0;
 `;
 
 export const ProjectImg = styled.img`
    width: 100%;
    height: auto;
    object-fit: contain;
+   margin: 1em 0 0 0;
    padding: 0;
    order: 1;
-   background: ${colors.primaryLight};
    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+   border-radius: 0.75em;
 
    @media (min-width: 1024px) {
+    margin: auto 1em;
     width: 50%;
     order: ${props => props.invertOrder ? 3 : 1};
     }
