@@ -1,20 +1,20 @@
 import React from "react";
 import {
-  ProjectsContainer,
-  ProjectsHeader,
-  ProjectsSubheader,
-} from "../projects/projects.style";
+  CardsContainer,
+  CardsHeader,
+  CardsSubheader,
+} from "./cards.style";
 import { projects } from "../../resources/projects";
-import Project from "../project/project.component";
+import Card from "../card/card.component";
 
 function Projects() {
   return (
-    <ProjectsContainer>
-      <ProjectsHeader>Moje portfolio</ProjectsHeader>
-      <ProjectsSubheader>JS/React</ProjectsSubheader>
+    <CardsContainer>
+      <CardsHeader>Moje portfolio</CardsHeader>
+      <CardsSubheader>JS/React</CardsSubheader>
       {projects.map((e,idx) => {
         return (
-          <Project
+          <Card
             key={e.title}
             invertOrder={(idx%2===0?0:1)}
             title={e.title}
@@ -26,7 +26,7 @@ function Projects() {
           />
         );
       })}
-    </ProjectsContainer>
+    </CardsContainer>
   );
 }
 
