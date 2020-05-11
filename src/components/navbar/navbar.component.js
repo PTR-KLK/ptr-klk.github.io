@@ -6,9 +6,10 @@ import {
   NavMenu,
   NavMenuItem,
   NavMenuBtn,
-  NavFooter,
 } from "./navbar.style";
-import Me from "../../resources/me.jpg";
+import Footer from "../footer/footer.component"
+import Me from "../../resources/me.png";
+import { navbar } from "../../resources/navbar.resource";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -22,41 +23,21 @@ function Navbar() {
   return (
     <NavContainer>
       <NavImage src={Me} alt="Me" />
-      <NavTitle>PTR KLK</NavTitle>
+      <NavTitle>{navbar.header}</NavTitle>
 
       <NavMenuBtn onClick={onVisibilityChange}>
         <FontAwesomeIcon size="2x" icon={faBars} color="#fff" />
       </NavMenuBtn>
       <NavMenu isVisible={menuVisible}>
-        <NavMenuItem onClick={onVisibilityChange} to="/">
-          O mnie
-        </NavMenuItem>
-        <NavMenuItem
-          onClick={onVisibilityChange}
-          to="/projects"
-        >
-          Portfolio
-        </NavMenuItem>
+        {navbar.arr.map((e) => {
+          return (
+            <NavMenuItem onClick={onVisibilityChange} to={e.to}>
+              {e.name}
+            </NavMenuItem>
+          );
+        })}
       </NavMenu>
-      <NavFooter>
-        <hr></hr>
-        by{" "}
-        <a
-          href="https://github.com/PTR-KLK"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          PTR-KLK
-        </a>
-        <br/>
-        <a
-          href="https://github.com/PTR-KLK/portfolio-blog-styled"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          portfolio-blog-styled
-        </a>
-      </NavFooter>
+      <Footer />
     </NavContainer>
   );
 }

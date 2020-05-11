@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import { colors } from '../../resources/colors';
+import { colors } from '../../resources/colors.resource';
 
 export const NavContainer = styled.nav`
     position: fixed;
@@ -99,26 +99,5 @@ export const NavMenuBtn = styled.button`
 
     @media (min-width: 1024px) {
         display: none;
-    }
-`;
-
-export const NavFooter = styled.footer`
-    display: none;
-
-    @media (min-width: 1024px) {
-        padding: 0.5em 0;
-        font-size: 0.8em;
-        display: block;
-        width: 10em;
-        text-align: center;
-
-        & a {
-            text-decoration: none;
-            color: ${colors.primaryTextLight};
-
-            &:hover{
-                color: ${colors.accent};
-            }
-        }
     }
 `;

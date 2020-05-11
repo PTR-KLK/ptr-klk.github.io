@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { colors } from "../../resources/colors";
+import { colors } from "../../resources/colors.resource";
 
 const edgeGap = 1;
 

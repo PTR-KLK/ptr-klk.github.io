@@ -1,12 +1,13 @@
 import React from "react";
-import { Header, Subheader, Paragraph, Links ,Icon } from "../App.style";
+import { FullPageHeight, Header, Subheader, Paragraph, Links , Icon } from "../App.style";
 import { faLinkedin, faGithubSquare } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelopeSquare } from "@fortawesome/free-solid-svg-icons";
-import { about } from "../resources/about";
+import { about } from "../resources/about.resource";
 
 function About() {
   return (
     <>
+      <FullPageHeight fullPage={true} />
       <Header>{about.header}</Header>
       <Subheader>{about.subheader}</Subheader>
       <Paragraph>

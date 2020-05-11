@@ -1,14 +1,15 @@
 import React from "react";
-import { projects } from "../resources/projects";
-import { Header, Subheader } from "../App.style";
+import { projects } from "../resources/projects.resource";
+import { Header, Subheader, FullPageHeight } from "../App.style";
 import Card from "../components/card/card.component";
 
 function Projects() {
   return (
     <>
-      <Header>Moje portfolio</Header>
-      <Subheader>JS/React</Subheader>
-      {projects.map((e, idx) => {
+      <FullPageHeight fullPage={true} />
+      <Header>{projects.header}</Header>
+      <Subheader>{projects.subheader}</Subheader>
+      {projects.arr.map((e, idx) => {
         return (
           <Card
             key={e.title}
