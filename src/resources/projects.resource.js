@@ -11,16 +11,17 @@ export const projects = {
       repo: "https://github.com/PTR-KLK/portfolio-blog-styled",
       image: portfolioBlogStyled,
       imageAlt: "project dsecription",
-      description:
-        "Szablon strony portfolio zbudowany przy pomocy create-react-app. Do styli wykorzystałem podejście CSS-in-JS zrealizowane przy pomocy biblioteki styled-components.",
+      description:['React',
+                   'Styled Components'],
     },
     {
       title: "Todolist-redux",
       repo: "https://github.com/PTR-KLK/todolist-redux",
       image: todolistRedux,
       imageAlt: "project dsecription",
-      description:
-        "Aplikacja todo stworzona przy pomocy create-react-app, biblioteki react-redux i wykorzystująca Fetch API do komunikacji z bazą danych, trzymaną na Firebase.",
+      description:['React',
+                   'Redux',
+                   'Firebase'],
     },
   ],
 };

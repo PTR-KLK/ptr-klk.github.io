@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import {
   NavContainer,
   NavImage,
+  NavbarHeader,
   NavTitle,
+  NavSubtitle,
   NavMenu,
   NavMenuItem,
   NavMenuBtn,
@@ -23,15 +25,18 @@ function Navbar() {
   return (
     <NavContainer>
       <NavImage src={Me} alt="Me" />
-      <NavTitle>{navbar.header}</NavTitle>
+      <NavbarHeader>
+        <NavTitle>{navbar.header}</NavTitle>
+        <NavSubtitle>{navbar.subheader}</NavSubtitle>
+      </NavbarHeader>
 
       <NavMenuBtn onClick={onVisibilityChange}>
         <FontAwesomeIcon size="2x" icon={faBars} color="#fff" />
       </NavMenuBtn>
       <NavMenu isVisible={menuVisible}>
-        {navbar.arr.map((e) => {
+        {navbar.arr.map((e,idx) => {
           return (
-            <NavMenuItem onClick={onVisibilityChange} to={e.to}>
+            <NavMenuItem key={idx} onClick={onVisibilityChange} to={e.to}>
               {e.name}
             </NavMenuItem>
           );

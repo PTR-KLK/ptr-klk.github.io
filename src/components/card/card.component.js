@@ -4,8 +4,8 @@ import {
   CardTitle,
   CardContent,
   CardImg,
-  CardParagraph,
   CardSummary,
+  CardList,
   CardLinks,
   CardIcon,
 } from "./card.style";
@@ -23,7 +23,16 @@ function Card(props) {
           alt={props.imageAlt}
         />
         <CardSummary invertOrder={props.invertOrder}>
-          <CardParagraph>{props.description}</CardParagraph>
+          <CardList>
+            {props.description.map( (e,idx,arr) => {
+              return (
+                <>
+                  <li key={idx}>{e}</li>
+                  {idx < arr.length - 1 ? <li key={idx}> • </li> : null}
+                </>
+              );
+            })}
+          </CardList>
           <CardLinks>
             <a href={props.repo} target="_blank" rel="noopener noreferrer">
               <CardIcon size="3x" icon={faGithubSquare} color="#333" />

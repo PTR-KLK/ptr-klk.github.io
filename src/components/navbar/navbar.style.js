@@ -13,6 +13,7 @@ export const NavContainer = styled.nav`
   align-items: center;
   background-color: ${colors.primary};
   color: ${colors.light};
+  border-bottom: 1px solid ${colors.light};
 
   @media (min-width: 1024px) {
     width: 33%;
@@ -22,6 +23,7 @@ export const NavContainer = styled.nav`
     z-index: 2;
     background-image: url(${backgroundNav});
     background-size: cover;
+    border-bottom: none;
   }
 
   @media (min-width: 1440px) {
@@ -34,8 +36,8 @@ export const NavContainer = styled.nav`
 `;
 
 export const NavImage = styled.img`
-  width: 2em;
-  height: 2em;
+  width: 3em;
+  height: 3em;
   border-radius: 50%;
   margin: 0 0 0 0.5em;
 
@@ -46,11 +48,25 @@ export const NavImage = styled.img`
   }
 `;
 
+export const NavbarHeader = styled.header`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const NavTitle = styled.h2`
   margin: 0;
   font-size: 2em;
-  font-weight: bolder;
+  font-weight: normal;
   text-align: center;
+`;
+
+export const NavSubtitle = styled.h3`
+  margin: 0;
+  font-size: 1.125em;
+  font-weight: normal;
+  text-align: center;
+
 `;
 
 export const NavMenu = styled.nav`
@@ -77,7 +93,6 @@ export const NavMenu = styled.nav`
 export const NavMenuItem = styled(Link)`
   text-decoration: none;
   color: ${colors.light};
-  font-weight: bolder;
   font-size: 2em;
   padding: 0.5em 0;
 
@@ -93,7 +108,7 @@ export const NavMenuItem = styled(Link)`
 `;
 
 export const NavMenuBtn = styled.button`
-  margin: 0 0.5em 0 0;
+  margin: 0 0.5em 0 1em;
   background-color: ${colors.primary};
   border: 0;
   padding: 0;

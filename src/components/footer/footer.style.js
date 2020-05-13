@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../resources/colors.resource';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { edgeGap } from "../../App.style";
 
 export const Container = styled.footer`
     display: none;
@@ -21,4 +22,19 @@ export const Container = styled.footer`
             }
         }
     }
+`;
+
+export const Links = styled.section`
+  display: flex;
+  justify-content: center;
+`;
+
+export const Icon = styled(FontAwesomeIcon)`
+  color: ${colors.light};
+  margin: 0 ${edgeGap/2}rem;
+
+  &:hover{
+    color: ${colors.accent};
+  }
+  
 `;
