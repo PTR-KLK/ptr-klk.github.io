@@ -14,7 +14,7 @@ import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
 
 function Card(props) {
   return (
-    <CardContainer>
+    <CardContainer invertOrder={props.invertOrder}>
       <CardTitle>{props.title}</CardTitle>
       <CardContent>
         <CardImg

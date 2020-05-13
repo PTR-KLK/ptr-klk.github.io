@@ -6,7 +6,7 @@ import Card from "../components/card/card.component";
 function Projects() {
   return (
     <>
-      <FullPageHeight fullPage={true} />
+      <FullPageHeight fullPage={false} />
       <Header>{projects.header}</Header>
       <Subheader>{projects.subheader}</Subheader>
       {projects.arr.map((e, idx) => {

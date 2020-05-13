@@ -14,7 +14,7 @@ export const Container = styled.footer`
 
         & a {
             text-decoration: none;
-            color: ${colors.primaryTextLight};
+            color: ${colors.light};
 
             &:hover{
                 color: ${colors.accent};

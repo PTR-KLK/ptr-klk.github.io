@@ -1,11 +1,8 @@
 export const colors = {
-  primaryDark: "#455A64",
-  primary: "#607D8B",
-  primaryTransparent: "rgba(96, 125, 139, 0.8)",
-  primaryLight: "#CFD8DC",
-  primaryTextLight: "#FFFFFF",
-  accent: "#FF9800",
-  primaryTextDark: "#212121",
-  secondaryText: "#757575",
-  divider: "#BDBDBD",
+  primary: "#485762",
+  secondary: "#634957",
+  light: "#F5F9E9",
+  dark: "#0A0908",
+  accent: "#E53D00",
+  primaryTransparent: "rgba(72, 87, 98, 0.8)",
 };

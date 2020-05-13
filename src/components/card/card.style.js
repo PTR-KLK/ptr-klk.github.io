@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { colors } from "../../resources/colors.resource";
+import { edgeGap } from "../../App.style";
 
-const edgeGap = 1;
+
 
 export const CardContainer = styled.section`
   margin: 1rem 0;
   width: 100%;
   display: flex;
   flex-direction: column;
-  color: ${colors.primaryTextLight};
-  background: ${colors.primary};
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  border-radius: ${edgeGap}rem;
+  color: ${colors.light};
+  
+  background: ${(props) => props.invertOrder ? colors.secondary : colors.primary};
 `;
 
 export const CardContent = styled.section`
@@ -72,8 +72,6 @@ export const CardImg = styled.img`
   height: auto;
   object-fit: contain;
   order: 1;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  border-radius: ${edgeGap}rem;
 
   @media (min-width: 1024px) {
     margin: ${(props) =>
@@ -86,5 +84,10 @@ export const CardImg = styled.img`
 `;
 
 export const CardIcon = styled(FontAwesomeIcon)`
-  color: ${colors.primaryTextLight};
+  color: ${colors.light};
+
+  &:hover{
+    color: ${colors.accent};
+  }
+
 `;
