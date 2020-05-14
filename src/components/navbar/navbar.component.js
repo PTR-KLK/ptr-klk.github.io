@@ -36,7 +36,7 @@ function Navbar() {
       <NavMenu isVisible={menuVisible}>
         {navbar.arr.map((e,idx) => {
           return (
-            <NavMenuItem key={idx} onClick={onVisibilityChange} to={e.to}>
+            <NavMenuItem key={`i${idx}`} onClick={onVisibilityChange} to={e.to}>
               {e.name}
             </NavMenuItem>
           );

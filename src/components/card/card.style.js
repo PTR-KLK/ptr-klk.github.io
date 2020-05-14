@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { colors } from "../../resources/colors.resource";
 import { edgeGap } from "../../App.style";
 
-
-
-export const CardContainer = styled.section`
+export const Container = styled.section`
   margin: ${edgeGap/4}rem 0;
+  padding: ${2*edgeGap}rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -20,93 +18,45 @@ export const CardContainer = styled.section`
 
   @media (min-width: 768px) {
     margin: ${edgeGap}rem 0;
+    padding: ${3*edgeGap}rem;
   }
 `;
 
-export const CardContent = styled.section`
+export const Content = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: ${edgeGap / 2}rem 0 ${edgeGap}rem 0;
-  padding: 0 ${edgeGap}rem;
 
   @media (min-width: 768px) {
     flex-direction: row;
-    padding: 0;
+    align-items: center;
   }
 `;
 
-export const CardTitle = styled.h3`
+export const Title = styled.h3`
   text-align: center;
   font-size: 1.5em;
   font-weight: normal;
-  margin: ${edgeGap}rem 0 ${edgeGap / 2}rem 0;
-`;
+  margin: 0 0 ${2*edgeGap}rem 0;
 
-export const CardList = styled.ul`
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0;
-    margin: ${edgeGap}rem 0;
-
-    & li {
-      font-size: ${1.125*edgeGap}rem;
-      margin: 0;
-    }
-
-    @media (min-width: 768px) {
-      margin: 0 0 ${edgeGap}rem 0;
-    }
-
-`;
-
-export const CardLinks = styled.nav`
-  & > * {
-    margin: 0 ${edgeGap/2}rem;
+  @media (min-width: 375px) {
+    font-size: 1.625em;
   }
-`;
-
-export const CardSummary = styled.summary`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  order: 2;
 
   @media (min-width: 768px) {
-    width: 30%;
-    justify-content: center;
-    margin: ${(props) =>
-      props.invertOrder
-        ? `auto ${edgeGap / 2}rem auto ${edgeGap}rem`
-        : `auto ${edgeGap}rem auto ${edgeGap / 2}rem`};
-  }
-`;
-
-export const CardImg = styled.img`
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  order: 1;
-
-  @media (min-width: 768px) {
-    margin: ${(props) =>
-      props.invertOrder
-        ? `auto ${edgeGap}rem auto ${edgeGap / 2}rem`
-        : `auto ${edgeGap / 2}rem auto ${edgeGap}rem`};
-    width: 70%;
-    order: ${(props) => (props.invertOrder ? 3 : 1)};
-  }
-`;
-
-export const CardIcon = styled(FontAwesomeIcon)`
-  color: ${colors.light};
-
-  &:hover{
-    color: ${colors.accent};
+    margin: 0 0 ${3*edgeGap}rem 0;
+    font-size: 1.75em;
   }
 
+  @media (min-width: 1024px) {
+    font-size: 1.5em;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 1.625em;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 2em;
+  }
 `;

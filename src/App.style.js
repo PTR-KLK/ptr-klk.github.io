@@ -66,10 +66,3 @@ export const Subheader = styled.h2`
 }
 
 `;
-
-export const Paragraph = styled.p`
-  width: 100%;
-  margin: ${edgeGap}rem 0;
-  text-align: justify;
-  color: ${colors.dark};
-`;
