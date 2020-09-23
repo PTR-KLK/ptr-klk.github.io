@@ -1,10 +1,9 @@
 import React, { useState } from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import {
   Nav,
   Hyperlink,
   HomeHyperlink,
-  Picture,
+  PageLogo,
   Button,
   Section,
   Icon,
@@ -12,25 +11,6 @@ import {
 
 export default function Navbar({ fixed }) {
   const [menuVisible, setMenuVisible] = useState(false)
-
-  const { ...data } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-        cat: file(relativePath: { eq: "images/icon.png" }) {
-          childImageSharp {
-            fluid(maxWidth: 256, maxHeight: 256) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    `
-  )
 
   const Menu = () => {
     return (
@@ -51,12 +31,7 @@ export default function Navbar({ fixed }) {
   return (
     <Nav fixed={fixed}>
       <HomeHyperlink fade duration={0.5} to={`/`}>
-        <Picture
-          loading="eager"
-          fluid={data.cat.childImageSharp.fluid}
-          alt="Cat staring at you"
-        />
-        <h2>{data.site.siteMetadata.title}</h2>
+        <PageLogo fixed={fixed} />
       </HomeHyperlink>
       <Button fixed={fixed} onClick={() => setMenuVisible(!menuVisible)}>
         <Icon />

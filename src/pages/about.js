@@ -28,7 +28,7 @@ export default function About({ data }) {
       />
       <main>
         <Section1 id="section1">
-          <Heading>{`About ${data.site.siteMetadata.title}`}</Heading>
+          <Heading>Hi, I'm Piotr Kielak.<br/>I'm a Frontend developer.</Heading>
         </Section1>
         <Section2 id="section2">
           <Heading>{`Check this out`}</Heading>

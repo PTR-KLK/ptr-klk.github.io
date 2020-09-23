@@ -1,10 +1,10 @@
 import styled from "@emotion/styled"
-import Img from "gatsby-image"
 import { ThreeBarsIcon } from "@primer/octicons-react"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { css } from "@emotion/core"
 import { colors, breakpoints, pageWidth } from "../../utils/theme"
 import { rhythm } from "../../utils/typography"
+import Logo from "../../assets/icon.svg"
 
 export const Nav = styled.nav`
   ${props =>
@@ -60,23 +60,13 @@ export const Hyperlink = styled(AniLink)`
 export const HomeHyperlink = styled(Hyperlink)`
   display: flex;
   align-items: center;
-
-  & h2 {
-    display: none;
-
-    @media (min-width: ${breakpoints.tablet}) {
-      display: block;
-      margin: 0;
-      text-align: center;
-    }
-  }
 `
 
-export const Picture = styled(Img)`
-  width: ${rhythm(1.75)};
-  height: ${rhythm(1.75)};
-  border-radius: 50%;
+export const PageLogo = styled(Logo)`
+  width: ${rhythm(1.5)};
+  height: ${rhythm(1.5)};
   margin: 0;
+  fill: ${props => props.fixed ? colors.light : colors.dark};
 
   @media (min-width: ${breakpoints.tablet}) {
     margin: 0 ${rhythm(0.25)} 0 0;
@@ -101,7 +91,7 @@ export const Section = styled.section`
   flex-flow: column;
   position: absolute;
   background: ${props => (props.fixed ? colors.darkTransparent : colors.light)};
-  top: ${rhythm(2)};
+  top: ${rhythm(1.75)};
   left: 0;
   text-align: center;
   z-index: 4;
@@ -134,8 +124,8 @@ export const Section = styled.section`
   }
 `
 export const Icon = styled(ThreeBarsIcon)`
-  width: ${rhythm(1)};
-  height: ${rhythm(1)};
+  width: ${rhythm(1.25)};
+  height: ${rhythm(1.25)};
 
   @media (min-width: ${breakpoints.tablet}) {
     & > * {
