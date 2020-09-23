@@ -1,8 +1,9 @@
 import styled from "@emotion/styled"
 import { colors } from "../../utils/theme"
-import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-export const Hyperlink = styled(Link)`
+
+export const Hyperlink = styled(AniLink)`
   color: inherit;
   text-decoration: none;
 

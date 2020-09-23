@@ -15,7 +15,7 @@ export default function Home({ data }) {
     >
       <Header title="Blog" />
       {data.allMarkdownRemark.edges.map(({ node }, idx, arr) => (
-        <Hyperlink key={node.id} to={node.fields.slug}>
+        <Hyperlink key={node.id} to={node.fields.slug} fade duration={0.5} >
           <BlogpostLink node={node} />
           {idx !== arr.length - 1 ? <Hr /> : null}
         </Hyperlink>

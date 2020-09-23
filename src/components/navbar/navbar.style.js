@@ -4,7 +4,6 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { css } from "@emotion/core"
 import { colors, breakpoints, pageWidth } from "../../utils/theme"
 import { rhythm } from "../../utils/typography"
-import Logo from "../../assets/icon.svg"
 
 export const Nav = styled.nav`
   ${props =>
@@ -62,11 +61,19 @@ export const HomeHyperlink = styled(Hyperlink)`
   align-items: center;
 `
 
-export const PageLogo = styled(Logo)`
-  width: ${rhythm(1.5)};
-  height: ${rhythm(1.5)};
+export const PageLogo = styled.p`
+  font-weight: bold;
+  font-size: ${rhythm(0.6)};
+  line-height: ${rhythm(0.6)};
+  padding: ${rhythm(0.1)};
   margin: 0;
-  fill: ${props => props.fixed ? colors.light : colors.dark};
+  color: ${props => (props.fixed ? colors.light : colors.dark)};
+  border: 2px solid ${props => (props.fixed ? colors.light : colors.dark)};
+
+  &:hover {
+    color: ${colors.accent};
+    border: 2px solid ${colors.accent};
+  }
 
   @media (min-width: ${breakpoints.tablet}) {
     margin: 0 ${rhythm(0.25)} 0 0;

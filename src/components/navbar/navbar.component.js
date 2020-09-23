@@ -31,7 +31,9 @@ export default function Navbar({ fixed }) {
   return (
     <Nav fixed={fixed}>
       <HomeHyperlink fade duration={0.5} to={`/`}>
-        <PageLogo fixed={fixed} />
+        <PageLogo fixed={fixed}>
+          PTR<br/>KLK
+        </PageLogo>
       </HomeHyperlink>
       <Button fixed={fixed} onClick={() => setMenuVisible(!menuVisible)}>
         <Icon />

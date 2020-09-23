@@ -6,8 +6,10 @@ export const colors = {
   dark: "#1E1E24",
   darkTransparent: "rgba(39, 39, 39, 0.7)",
   primary: "#645DD7",
+  primaryTransparent: "rgba(100, 93, 215, 0.99)",
   secondary: "#B37BA4",
-  accent: "#002699"
+  secondaryTransparent: "rgba(179, 123, 164, 0.99)",
+  accent: "#002699",
 }
 
 export const breakpoints = {
