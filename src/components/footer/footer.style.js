@@ -1,40 +1,63 @@
-import styled from 'styled-components';
-import { colors } from '../../resources/colors.resource';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { edgeGap } from "../../App.style";
+import styled from "@emotion/styled"
+import { css } from "@emotion/core"
+import { rhythm } from "../../utils/typography"
+import { colors, breakpoints, pageWidth, Hr } from "../../utils/theme"
 
 export const Container = styled.footer`
-    display: none;
+  ${props =>
+    props.absolute
+      ? css`
+          position: absolute;
+          bottom: 0;
+          z-index: 3;
+          color: ${colors.light};
+        `
+      : css`
+          color: ${colors.dark};
+        `}
 
-    @media (min-width: 1024px) {
-        padding: 0.5em 0;
-        font-size: 0.8em;
-        display: block;
-        width: 10em;
-        text-align: center;
+  width: 100%;
+  max-width: ${pageWidth};
 
-        & a {
-            text-decoration: none;
-            color: ${colors.light};
+  @media (min-width: ${breakpoints.tablet}) {
+    margin: 0 auto;
+  }
+`
 
-            &:hover{
-                color: ${colors.accent};
-            }
-        }
-    }
-`;
+export const Section = styled.section`
+  width: 100%;
+  padding: ${rhythm(0.5)};
+  text-align: center;
 
-export const Links = styled.section`
-  display: flex;
-  justify-content: center;
-`;
+  & > * {
+    display: block;
+  }
 
-export const Icon = styled(FontAwesomeIcon)`
-  color: ${colors.light};
-  margin: 0 ${edgeGap/2}rem;
+  @media (min-width: ${breakpoints.tablet}) {
+    padding: ${rhythm(1)};
+  }
+`
 
-  &:hover{
+export const Hyperlink = styled.a`
+  color: inherit;
+  text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
     color: ${colors.accent};
   }
-  
-`;
+`
+
+export const FooterHr = styled(Hr)`
+  ${props =>
+    props.absolute
+      ? css`
+          border-bottom: 1px solid ${colors.light};
+        `
+      : css`
+          border-bottom: 1px solid ${colors.dark};
+        `}
+`

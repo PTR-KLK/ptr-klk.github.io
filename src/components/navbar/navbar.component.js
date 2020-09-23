@@ -1,50 +1,67 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import {
-  NavContainer,
-  NavImage,
-  NavbarHeader,
-  NavTitle,
-  NavSubtitle,
-  NavMenu,
-  NavMenuItem,
-  NavMenuBtn,
-} from "./navbar.style";
-import Footer from "../footer/footer.component"
-import Me from "../../resources/me.png";
-import { navbar } from "../../resources/navbar.resource";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+  Nav,
+  Hyperlink,
+  HomeHyperlink,
+  Picture,
+  Button,
+  Section,
+  Icon,
+} from "./navbar.style"
 
-function Navbar() {
-  const [menuVisible, setMenuVisible] = useState(false);
+export default function Navbar({ fixed }) {
+  const [menuVisible, setMenuVisible] = useState(false)
 
-  const onVisibilityChange = () => {
-    setMenuVisible(!menuVisible);
-  };
+  const { ...data } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+        cat: file(relativePath: { eq: "images/icon.png" }) {
+          childImageSharp {
+            fluid(maxWidth: 256, maxHeight: 256) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    `
+  )
+
+  const Menu = () => {
+    return (
+      <Section fixed={fixed} menuVisible={menuVisible}>
+        <Hyperlink fade duration={0.5} to={`/`}>
+          Blog
+        </Hyperlink>{" "}
+        <Hyperlink fade duration={0.5} to={`/portfolio/`}>
+          Portfolio
+        </Hyperlink>{" "}
+        <Hyperlink fade duration={0.5} to={`/about/`}>
+          About
+        </Hyperlink>
+      </Section>
+    )
+  }
 
   return (
-    <NavContainer>
-      <NavImage src={Me} alt="Me" />
-      <NavbarHeader>
-        <NavTitle>{navbar.header}</NavTitle>
-        <NavSubtitle>{navbar.subheader}</NavSubtitle>
-      </NavbarHeader>
-
-      <NavMenuBtn onClick={onVisibilityChange}>
-        <FontAwesomeIcon size="2x" icon={faBars} color="#fff" />
-      </NavMenuBtn>
-      <NavMenu isVisible={menuVisible}>
-        {navbar.arr.map((e,idx) => {
-          return (
-            <NavMenuItem key={`i${idx}`} onClick={onVisibilityChange} to={e.to}>
-              {e.name}
-            </NavMenuItem>
-          );
-        })}
-      </NavMenu>
-      <Footer />
-    </NavContainer>
-  );
+    <Nav fixed={fixed}>
+      <HomeHyperlink fade duration={0.5} to={`/`}>
+        <Picture
+          loading="eager"
+          fluid={data.cat.childImageSharp.fluid}
+          alt="Cat staring at you"
+        />
+        <h2>{data.site.siteMetadata.title}</h2>
+      </HomeHyperlink>
+      <Button fixed={fixed} onClick={() => setMenuVisible(!menuVisible)}>
+        <Icon />
+      </Button>
+      <Menu />
+    </Nav>
+  )
 }
-
-export default Navbar;
