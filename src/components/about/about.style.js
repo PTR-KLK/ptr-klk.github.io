@@ -2,6 +2,20 @@ import styled from "@emotion/styled"
 import { keyframes } from "@emotion/core"
 import { colors, breakpoints } from "../../utils/theme"
 import { rhythm } from "../../utils/typography"
+import {
+  Html5,
+  Css3,
+  Javascript,
+  ReactJs,
+  Redux,
+  Gatsby,
+  Npm,
+  Git,
+  Graphql,
+  StyledComponents,
+  Visualstudiocode,
+  Linux,
+} from "@icons-pack/react-simple-icons"
 
 const reveal = keyframes`
   0% {
@@ -31,11 +45,11 @@ export const Heading = styled.h1`
   text-align: center;
   align-self: center;
   font-size: ${rhythm(1)};
-  padding: ${rhythm(0.75)};
+  padding-bottom: ${rhythm(0.75)};
 
   @media (min-width: ${breakpoints.tablet}) {
     font-size: ${rhythm(1.5)};
-    padding: ${rhythm(1)};
+    padding-bottom: ${rhythm(1)};
   }
 `
 
@@ -76,6 +90,16 @@ const Section = styled.section`
   color: ${colors.light};
   display: flex;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height 100%; 
+  }
 
   & > * {
     margin: 0;
@@ -83,9 +107,17 @@ const Section = styled.section`
 `
 
 export const Section1 = styled(Section)`
-  height: 50vh;
-  background: ${colors.secondary};
+  height: 75vh;
+  background: ${colors.secondaryTransparent};
 
+  &:before {
+    background: repeating-conic-gradient(
+      from 10deg at 41.125% 41.125%,
+      ${colors.dark} 5deg 15deg,
+      ${colors.light} 15deg 25deg);
+    );
+  }
+  
   h1:nth-of-type(1) {
     opacity: 0;
     animation: ${reveal} 1s ease forwards;
@@ -100,12 +132,19 @@ export const Section1 = styled(Section)`
 `
 
 export const Section2 = styled(Section)`
-  height: 50vh;
-  background: ${colors.primary};
+  height: 25vh;
+  background: ${colors.primaryTransparent};
   display: flex;
   flex-direction: column;
+
+  &:before {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      ${colors.light} 0 10px,
+      ${colors.dark} 10px 20px
+    );
+  }
 `
-//
 
 export const AnimatedList = styled.div`
   font-size: ${rhythm(1)};
@@ -124,6 +163,9 @@ export const AnimatedList = styled.div`
 
     li {
       width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin: 0;
     }
 
@@ -136,11 +178,69 @@ export const AnimatedList = styled.div`
     font-size: ${rhythm(1.5)};
   }
 `
+const iconStyle = `
+  height: ${rhythm(1.5)};
+  width: ${rhythm(1.5)};
+  color: ${colors.light};
+  margin: 0 ${rhythm(0.25)};
+
+  @media (min-width: ${breakpoints.tablet}) {
+    height: ${rhythm(2.5)};
+    width: ${rhythm(2.5)};
+    margin: 0 ${rhythm(0.5)};
+  }
+`
+export const HtmlIcon = styled(Html5)`
+  ${iconStyle}
+`
+export const CssIcon = styled(Css3)`
+  ${iconStyle}
+`
+export const ReactIcon = styled(ReactJs)`
+  ${iconStyle}
+`
+export const ReduxIcon = styled(Redux)`
+  ${iconStyle}
+`
+export const GitIcon = styled(Git)`
+  ${iconStyle}
+`
+export const GatsbyIcon = styled(Gatsby)`
+  ${iconStyle}
+`
+export const JsIcon = styled(Javascript)`
+  ${iconStyle}
+`
+export const NpmIcon = styled(Npm)`
+  ${iconStyle}
+`
+export const GraphqlIcon = styled(Graphql)`
+  ${iconStyle}
+`
+export const StyledIcon = styled(StyledComponents)`
+  ${iconStyle}
+`
+export const VsIcon = styled(Visualstudiocode)`
+  ${iconStyle}
+`
+export const LinuxIcon = styled(Linux)`
+  ${iconStyle}
+`
 
 export const Section3 = styled(Section)`
   height: 100vh;
-  background: ${colors.secondary};
+  background: ${colors.secondaryTransparent};
   flex-direction: column;
+
+  &:before {
+    background: repeating-radial-gradient(
+      circle at 25% 25%,
+      ${colors.dark},
+      ${colors.dark} 15px,
+      ${colors.light} 15px,
+      ${colors.light} 30px
+    );
+  }
 
   p {
     width: 100%;
@@ -158,10 +258,18 @@ export const Section3 = styled(Section)`
 
 export const Section4 = styled(Section)`
   height: 100vh;
-  background: ${colors.primary};
+  background: ${colors.primaryTransparent};
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &:before {
+    background-image: repeating-linear-gradient(
+      45deg,
+      ${colors.light} 0 10px,
+      ${colors.dark} 10px 20px
+    );
+  }
 
   p {
     font-size: ${rhythm(0.625)};
@@ -169,5 +277,25 @@ export const Section4 = styled(Section)`
     @media (min-width: ${breakpoints.tablet}) {
       font-size: ${rhythm(0.75)};
     }
+  }
+`
+
+export const ExternalLink = styled.a`
+  font-size: ${rhythm(0.75)};
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: inherit;
+
+  &:hover {
+    color: ${colors.accent};
+
+    svg {
+      color: ${colors.accent};
+    }
+  }
+
+  @media (min-width: ${breakpoints.tablet}) {
+    font-size: ${rhythm(1.25)};
   }
 `
