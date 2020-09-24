@@ -7,6 +7,7 @@ import {
   Heading,
   AnimatedHeading,
   AnimatedSubHeading,
+  AnimatedList,
   Section1,
   Section2,
   Section3,
@@ -38,13 +39,31 @@ export default function About({ data }) {
           <AnimatedSubHeading>FRONTEND DEVELOPER</AnimatedSubHeading>
         </Section1>
         <Section2 id="section2">
-          <Heading>{`Check this out`}</Heading>
+          <Heading>Technologies</Heading>
+          <AnimatedList>
+            <ul>
+              <li>Html/CSS</li>
+              <li>React/Redux</li>
+              <li>Npm</li>
+              <li>Git</li>
+              {/* <li>Npm</li>       */}
+              {/* <li>Git</li> */}
+            </ul>
+          </AnimatedList>
         </Section2>
         <Section3 id="section3">
-          <Heading>{`You can also check this`}</Heading>
+          <Heading>Bio</Heading>
+          <p>
+          I want to create attractive and useful apps and webpages, so I became a front-end developer. 
+          <br/><br/>
+          Tailored applications and websites can make your daily life much convenient. 
+          <br/><br/>
+          I like using things that have a form that matches the content. I try to reflect it in my projects as well.
+          </p>
         </Section3>
         <Section4 id="section4">
-          <Heading>{`Contact me`}</Heading>
+          <Heading>Contact</Heading>
+          <p>my mail</p>
           <Footer absolute />
         </Section4>
       </main>

@@ -5,16 +5,16 @@ export default function Sidebar() {
   return (
     <Nav>
       <Hyperlink to="/about#section4" stripHash>
-        #4
+        Contact
       </Hyperlink>
       <Hyperlink to="/about#section3" stripHash>
-        #3
+        Bio
       </Hyperlink>
       <Hyperlink to="/about#section2" stripHash>
-        #2
+        Tech
       </Hyperlink>
       <Hyperlink to="/about#section1" stripHash>
-        #1
+        Me
       </Hyperlink>
     </Nav>
   )
