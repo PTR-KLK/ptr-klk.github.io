@@ -18,9 +18,6 @@ export default function Navbar({ fixed }) {
         <Hyperlink fade duration={0.5} to={`/`}>
           Blog
         </Hyperlink>{" "}
-        <Hyperlink fade duration={0.5} to={`/portfolio/`}>
-          Portfolio
-        </Hyperlink>{" "}
         <Hyperlink fade duration={0.5} to={`/about/`}>
           About
         </Hyperlink>

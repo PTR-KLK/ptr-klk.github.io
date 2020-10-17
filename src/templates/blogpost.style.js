@@ -14,7 +14,7 @@ export const Image = styled(Img)`
 `
 
 export const Header = styled.header`
-  padding: ${rhythm(0.5)};
+  padding: ${rhythm(0.5)} ${rhythm(0.5)} 0;
 
   & > *:not(:last-child) {
     margin-bottom: ${rhythm(0.25)};
@@ -26,7 +26,7 @@ export const Header = styled.header`
   }
 
   @media (min-width: ${breakpoints.tablet}) {
-    padding: ${rhythm(1)};
+    padding: ${rhythm(1)} ${rhythm(1)} 0;
   }
 `
 

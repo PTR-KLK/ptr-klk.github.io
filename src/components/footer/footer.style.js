@@ -4,18 +4,14 @@ import { rhythm } from "../../utils/typography"
 import { colors, breakpoints, pageWidth, Hr } from "../../utils/theme"
 
 export const Container = styled.footer`
+  color: ${props => (props.light ? colors.light : colors.dark)};
   ${props =>
-    props.absolute
+    props.light
       ? css`
           position: absolute;
           bottom: 0;
-          z-index: 3;
-          color: ${colors.light};
         `
-      : css`
-          color: ${colors.dark};
-        `}
-
+      : null}
   width: 100%;
   max-width: ${pageWidth};
 
@@ -52,12 +48,6 @@ export const Hyperlink = styled.a`
 `
 
 export const FooterHr = styled(Hr)`
-  ${props =>
-    props.absolute
-      ? css`
-          border-bottom: 1px solid ${colors.light};
-        `
-      : css`
-          border-bottom: 1px solid ${colors.dark};
-        `}
+  border-bottom: ${props =>
+    props.light ? `1px solid ${colors.light}` : `1px solid ${colors.dark}`};
 `

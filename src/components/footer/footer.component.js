@@ -1,10 +1,10 @@
 import React from "react"
 import { Container, Section, Hyperlink, FooterHr } from "./footer.style"
 
-export default function Footer({ absolute }) {
+export default function Footer({ light }) {
   return (
-    <Container absolute={absolute}>
-      <FooterHr absolute={absolute} />
+    <Container light={light}>
+      <FooterHr light={light} />
       <Section>
         <span>
           Powered by{" "}

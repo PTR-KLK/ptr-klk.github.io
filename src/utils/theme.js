@@ -1,14 +1,25 @@
 import styled from "@emotion/styled"
 import { rhythm } from "./typography"
+import { keyframes } from "@emotion/core"
+
+export const reveal = keyframes`
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+`
 
 export const colors = {
   light: "#F8F7FF",
   dark: "#1E1E24",
-  darkTransparent: "rgba(39, 39, 39, 0.7)",
+  darkTransparent: "rgba(39, 39, 39, 0.8)",
   primary: "#645DD7",
-  primaryTransparent: "rgba(100, 93, 215, 0.95)",
+  primaryTransparent: "rgba(100, 93, 215, 0.75)",
   secondary: "#B37BA4",
-  secondaryTransparent: "rgba(179, 123, 164, 0.95)",
+  secondaryTransparent: "rgba(179, 123, 164, 0.75)",
   accent: "#002699",
 }
 

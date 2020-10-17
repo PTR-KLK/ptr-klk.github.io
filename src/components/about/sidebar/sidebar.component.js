@@ -4,16 +4,19 @@ import { Nav, Hyperlink } from "./sidebar.style"
 export default function Sidebar() {
   return (
     <Nav>
-      <Hyperlink to="/about#section4" stripHash>
+      <Hyperlink to="/about#contact" stripHash>
         Contact
       </Hyperlink>
-      <Hyperlink to="/about#section3" stripHash>
-        Bio
+      <Hyperlink to="/about#portfolio" stripHash>
+        Portfolio
       </Hyperlink>
-      <Hyperlink to="/about#section2" stripHash>
+      <Hyperlink to="/about#tech" stripHash>
         Tech
       </Hyperlink>
-      <Hyperlink to="/about#section1" stripHash>
+      <Hyperlink to="/about#bio" stripHash>
+        Bio
+      </Hyperlink>
+      <Hyperlink to="/about#hero" stripHash>
         Me
       </Hyperlink>
     </Nav>

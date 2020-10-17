@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Image, Header, Section} from "./blogpost.style"
-import { Hr } from "../utils/theme"
 import Layout from "../components/layout/layout.component"
 
 export default function BlogPost({ data }) {
@@ -26,7 +25,6 @@ export default function BlogPost({ data }) {
           <p>{post.frontmatter.date}</p>
           <p>{post.frontmatter.excerpt}</p>
         </Header>
-        <Hr />  
         <Section dangerouslySetInnerHTML={{ __html: post.html }} />
       </Layout>
     </>

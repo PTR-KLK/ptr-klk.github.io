@@ -2,32 +2,25 @@ import React from "react"
 import SEO from "../components/seo/seo.component"
 import Navbar from "../components/navbar/navbar.component"
 import Sidebar from "../components/about/sidebar/sidebar.component"
-import Footer from "../components/footer/footer.component"
+import Logo from "../components/about/hero/hero.component"
+import Technology from "../components/about/technology/technology.component"
+import List from "../components/about/list/list.component"
+import Bio from "../components/about/bio/bio.component"
+import Social from "../components/about/social/social.component"
 import {
   Heading,
-  AnimatedHeading,
-  AnimatedSubHeading,
-  AnimatedList,
-  ReactIcon,
-  HtmlIcon,
-  CssIcon,
-  ReduxIcon,
-  GitIcon,
-  GatsbyIcon,
-  JsIcon,
-  NpmIcon,
-  GraphqlIcon,
-  StyledIcon,
-  VsIcon,
-  LinuxIcon,
-  Section1,
-  Section2,
-  Section3,
-  Section4,
-  ExternalLink,
+  Hero,
+  Tech,
+  Biography,
+  Portfolio,
+  Contact,
 } from "../components/about/about.style"
+import { graphql } from "gatsby"
 
-export default function About() {
+export default function About({ data }) {
+  const images = [...data.allFile.edges.map(e => e.node)]
+
+
   return (
     <>
       <Navbar fixed />
@@ -37,79 +30,125 @@ export default function About() {
         description="Some information about me, what I was doing, what am I doing, and what I want to do."
       />
       <main>
-        <Section1 id="section1">
-          <AnimatedHeading>
-            PIOTR
-            <br />
-            KIELAK
-          </AnimatedHeading>
-          <AnimatedHeading>
-            PTR
-            <br />
-            KLK
-          </AnimatedHeading>
-          <AnimatedSubHeading>FRONTEND DEVELOPER</AnimatedSubHeading>
-        </Section1>
-        <Section2 id="section2">
-          <Heading>What I Use</Heading>
-          <AnimatedList>
-            <ul>
-              <li>
-                <HtmlIcon title="Html5" />
-                <CssIcon title="Css3" />
-                <JsIcon title="Javascript" />
-              </li>
-              <li>
-                <ReactIcon title="React" />
-                <ReduxIcon title="Redux" />
-                <GatsbyIcon title="Gatsby" />
-              </li>
-              <li>
-                <GraphqlIcon title="GraphQl" />
-                <NpmIcon title="Npm" />
-                <GitIcon title="Git" />
-              </li>
-              <li>
-                <StyledIcon title="StyledComponents" />
-                <VsIcon title="VSCode" />
-                <LinuxIcon title="GNU/Linux" />
-              </li>
-            </ul>
-          </AnimatedList>
-        </Section2>
-        <Section3 id="section3">
-          <Heading>Bio</Heading>
-          <p>
-            I want to create attractive and useful apps and webpages, so I
-            became a front-end developer.
-            <br />
-            <br />
-            Tailored applications and websites can make your daily life much
-            convenient.
-            <br />
-            <br />I like using things that have a form that matches the content.
-            I try to reflect it in my projects as well.
-          </p>
-        </Section3>
-        <Section4 id="section4">
-          <Heading>Contact</Heading>
-          <ExternalLink
-            href="https://dev.to/ptrklk"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            dev.to Profile
-          </ExternalLink>
-          <ExternalLink
-            href="https://www.linkedin.com/in/piotr-kielak/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn Profile
-          </ExternalLink>
-          <Footer absolute />
-        </Section4>
+        <Hero
+          Tag="figure"
+          fluid={
+            images.find(e => e.base === "keyboard.jpg").childImageSharp.fluid
+          }
+          id="hero"
+        >
+          <figcaption>
+            <Logo />
+          </figcaption>
+        </Hero>
+        <Biography
+          Tag="figure"
+          fluid={
+            images.find(e => e.base === "tinkerer.jpg").childImageSharp.fluid
+          }
+          id="bio"
+        >
+          <figcaption>
+            <Heading>About Me</Heading>
+            <Bio data={data} />
+          </figcaption>
+        </Biography>
+        <Tech
+          Tag="figure"
+          fluid={
+            images.find(e => e.base === "technology.jpg").childImageSharp.fluid
+          }
+          id="tech"
+        >
+          <figcaption>
+            <Heading>Technologies I Use</Heading>
+            <Technology />
+          </figcaption>
+        </Tech>
+        <Portfolio
+          Tag="figure"
+          fluid={images.find(e => e.base === "work.jpg").childImageSharp.fluid}
+          id="portfolio"
+        >
+          <figcaption>
+            <Heading>Portfolio</Heading>
+            <List data={data} />
+          </figcaption>
+        </Portfolio>
+        <Contact
+          Tag="figure"
+          fluid={
+            images.find(e => e.base === "contact.jpg").childImageSharp.fluid
+          }
+          id="contact"
+        >
+          <figcaption>
+            <Heading>Contact Me</Heading>
+            <Social />
+          </figcaption>
+        </Contact>
       </main>
     </>
   )
 }
+
+export const query = graphql`
+  query {
+    file(relativePath: { eq: "images/avatar.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 440) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    allFile(filter: { relativeDirectory: { eq: "images/about" } }) {
+      edges {
+        node {
+          base
+          childImageSharp {
+            fluid(
+              maxWidth: 3840
+              duotone: { highlight: "#F8F7FF", shadow: "#1E1E24" }
+            ) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+    githubData {
+      data {
+        user {
+          url
+          avatarUrl
+          isHireable
+          name
+          login
+          repositories {
+            edges {
+              node {
+                name
+                url
+                homepageUrl
+                repositoryTopics {
+                  nodes {
+                    url
+                    topic {
+                      name
+                    }
+                  }
+                }
+                description
+                pushedAt
+                primaryLanguage {
+                  color
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
