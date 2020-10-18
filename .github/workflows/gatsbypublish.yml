@@ -18,3 +18,7 @@ jobs:
           access-token: ${{ secrets.GATSBY_API_TOKEN }}
           deploy-branch: master
           gatsby-args: --prefix-paths
+      - uses: ful1e5/TheActionDev@v2
+        with:
+          api-key: ${{ secrets.DEVTO_API_KEY }} # Store your 'api-key' in Github Secret
+          directory: ./articles # Your article directory
