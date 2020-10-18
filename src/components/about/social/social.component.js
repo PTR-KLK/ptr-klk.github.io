@@ -1,10 +1,8 @@
 import React from "react"
-import Footer from "../../footer/footer.component"
 import { Container, ExternalLink } from "./social.style"
 
 export default function Social() {
   return (
-    <>
       <Container>
         <ExternalLink
           href="https://dev.to/ptrklk"
@@ -21,7 +19,5 @@ export default function Social() {
           LinkedIn Profile
         </ExternalLink>
       </Container>
-      <Footer light />
-    </>
   )
 }

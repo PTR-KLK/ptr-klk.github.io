@@ -2,11 +2,13 @@ import React from "react"
 import SEO from "../components/seo/seo.component"
 import Navbar from "../components/navbar/navbar.component"
 import Sidebar from "../components/about/sidebar/sidebar.component"
+import Figcaption from "../components/about/figcaption/figcaption.component"
 import Logo from "../components/about/hero/hero.component"
 import Technology from "../components/about/technology/technology.component"
 import List from "../components/about/list/list.component"
 import Bio from "../components/about/bio/bio.component"
 import Social from "../components/about/social/social.component"
+import Footer from "../components/footer/footer.component"
 import {
   Heading,
   Hero,
@@ -19,7 +21,6 @@ import { graphql } from "gatsby"
 
 export default function About({ data }) {
   const images = [...data.allFile.edges.map(e => e.node)]
-
 
   return (
     <>
@@ -48,10 +49,10 @@ export default function About({ data }) {
           }
           id="bio"
         >
-          <figcaption>
+          <Figcaption>
             <Heading>About Me</Heading>
             <Bio data={data} />
-          </figcaption>
+          </Figcaption>
         </Biography>
         <Tech
           Tag="figure"
@@ -60,20 +61,20 @@ export default function About({ data }) {
           }
           id="tech"
         >
-          <figcaption>
+          <Figcaption>
             <Heading>Technologies I Use</Heading>
             <Technology />
-          </figcaption>
+          </Figcaption>
         </Tech>
         <Portfolio
           Tag="figure"
           fluid={images.find(e => e.base === "work.jpg").childImageSharp.fluid}
           id="portfolio"
         >
-          <figcaption>
+          <Figcaption>
             <Heading>Portfolio</Heading>
             <List data={data} />
-          </figcaption>
+          </Figcaption>
         </Portfolio>
         <Contact
           Tag="figure"
@@ -82,11 +83,12 @@ export default function About({ data }) {
           }
           id="contact"
         >
-          <figcaption>
+          <Figcaption>
             <Heading>Contact Me</Heading>
             <Social />
-          </figcaption>
+          </Figcaption>
         </Contact>
+        <Footer light />
       </main>
     </>
   )

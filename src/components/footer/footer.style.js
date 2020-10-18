@@ -9,7 +9,10 @@ export const Container = styled.footer`
     props.light
       ? css`
           position: absolute;
+          left: 50%;
+          transform: translate(-50%, 0);
           bottom: 0;
+          text-shadow: 1px 1px 1px ${colors.darkTransparent};
         `
       : null}
   width: 100%;
@@ -17,6 +20,7 @@ export const Container = styled.footer`
 
   @media (min-width: ${breakpoints.tablet}) {
     margin: 0 auto;
+    padding: 0 1rem;
   }
 `
 

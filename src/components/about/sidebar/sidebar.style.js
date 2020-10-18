@@ -19,6 +19,7 @@ export const Hyperlink = styled(AnchorLink)`
   text-decoration: none;
   cursor: pointer;
   font-size: ${rhythm(0.75)};
+  text-shadow: 1px 1px 1px ${colors.darkTransparent};
   padding: ${rhythm(0.125)} ${rhythm(0.25)};
   margin: 0;
   

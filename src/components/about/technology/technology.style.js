@@ -18,9 +18,11 @@ export const Ul = styled.ul`
     list-style: none;
 
     svg {
+      cursor: pointer;
       height: ${rhythm(3)};
       width: ${rhythm(3)};
       margin: ${rhythm(0.5)} ${rhythm(1)};
+      filter: drop-shadow( 1px 1px 1px ${colors.darkTransparent});
     }
   }
 `

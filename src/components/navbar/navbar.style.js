@@ -13,6 +13,7 @@ export const Nav = styled.nav`
           z-index: 4;
           top: 0;
           color: ${colors.light};
+          text-shadow: 1px 1px 1px ${colors.darkTransparent};
           background: none;
 
           @media (min-width: ${breakpoints.tablet}) {

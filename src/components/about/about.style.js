@@ -18,6 +18,7 @@ export const Heading = styled.h2`
 
 const Figure = styled(BackgroundImage)`
   color: ${colors.light};
+  text-shadow: 1px 1px 1px ${colors.darkTransparent};
   position: relative;
   overflow: hidden;
   background-size: cover;
