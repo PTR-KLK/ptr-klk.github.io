@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { rhythm } from "../../utils/typography"
 import { colors, pageWidth } from "../../utils/theme"
 
 export const Main = styled.main`
@@ -7,6 +8,10 @@ export const Main = styled.main`
   color: ${colors.dark};
   background: ${colors.light};
   width: 100%;
+
+  footer {
+    margin: ${rhythm(1)} auto 0;
+  }
 `
 
 export const Article = styled.article`

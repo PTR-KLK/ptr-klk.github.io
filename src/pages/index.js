@@ -1,19 +1,19 @@
 import React from "react"
 import Layout from "../components/layout/layout.component"
-import { Hyperlink, Heading } from "../components/index/index.style"
+import Header from "../components/header/header.component"
+import { Hyperlink } from "../components/index/index.style"
 import { graphql } from "gatsby"
 import BlogpostLink from "../components/index/blogpostLink/blogpostLink.component"
 
 export default function Home({ data }) {
-
   return (
     <Layout
       title={"Main page"}
       description={"Recent news from my journey in the web development world."}
     >
-      <Heading>Blog</Heading>
+      <Header />
       {data.allMarkdownRemark.edges.map(({ node }) => (
-        <Hyperlink key={node.id} to={node.fields.slug} fade duration={0.5} >
+        <Hyperlink key={node.id} to={node.fields.slug} fade duration={0.5}>
           <BlogpostLink node={node} />
         </Hyperlink>
       ))}

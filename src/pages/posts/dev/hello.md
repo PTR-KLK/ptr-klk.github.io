@@ -2,7 +2,7 @@
 title: "Hello world!"
 date: "2020-09-23"
 excerpt: "Few more words just to say hello."
-featuredImage: ../images/hello.jpg
+featuredImage: ./assets/hello.jpg
 ---
 
 Hi, this is my first post on my personal blog. :)
