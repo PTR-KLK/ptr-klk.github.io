@@ -21,4 +21,4 @@ jobs:
       - uses: ful1e5/TheActionDev@v2
         with:
           api-key: ${{ secrets.DEVTO_API_KEY }} # Store your 'api-key' in Github Secret
-          directory: ./articles # Your article directory
+          directory: ./src/pages/posts/dev # Your article directory
