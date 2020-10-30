@@ -1,7 +1,14 @@
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
+exports.onCreateNode = async ({
+  node,
+  getNode,
+  actions,
+  cache,
+  createNodeId,
+}) => {
   const { createNodeField } = actions
   if (node.internal.type === `MarkdownRemark`) {
     const slug = createFilePath({ node, getNode, basePath: `pages` })
@@ -10,6 +17,19 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: `slug`,
       value: slug,
     })
+  }
+  if (node.internal.type === "MarkdownRemark" && node.frontmatter.cover_image) {
+    let fileNode = await createRemoteFileNode({
+      url: node.frontmatter.cover_image,
+      parentNodeId: node.id,
+      createNode: actions.createNode,
+      createNodeId,
+      cache,
+    })
+
+    if (fileNode) {
+      node.cover_image___NODE = fileNode.id
+    }
   }
 }
 

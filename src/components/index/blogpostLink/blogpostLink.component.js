@@ -4,9 +4,9 @@ import { Header, Container, Image } from "./blogpostLink.style"
 export default function BlogpostLink({ node }) {
   return (
     <Container>
-      {node.frontmatter.featuredImage ? (
+      {node.cover_image ? (
         <Image
-          fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
+          fluid={node.cover_image.childImageSharp.fluid}
           objectFit="contain"
           alt=""
         />

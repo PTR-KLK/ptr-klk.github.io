@@ -36,14 +36,14 @@ export const query = graphql`
             title
             date(formatString: "DD MMMM, YYYY")
             excerpt
-            featuredImage {
-              childImageSharp {
-                fluid(
-                  maxWidth: 2560
-                  duotone: { highlight: "#F8F7FF", shadow: "#1E1E24" }
-                ) {
-                  ...GatsbyImageSharpFluid
-                }
+          }
+          cover_image {
+            childImageSharp {
+              fluid(
+                maxWidth: 2560
+                duotone: { highlight: "#F8F7FF", shadow: "#1E1E24" }
+              ) {
+                ...GatsbyImageSharpFluid
               }
             }
           }

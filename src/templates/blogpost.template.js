@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Image, Header, Section} from "./blogpost.style"
+import { Image, Header, Section } from "./blogpost.style"
 import Layout from "../components/layout/layout.component"
 
 export default function BlogPost({ data }) {
@@ -12,11 +12,11 @@ export default function BlogPost({ data }) {
         title={post.frontmatter.title}
         description={post.frontmatter.excerpt}
       >
-        {post.frontmatter.featuredImage ? (
+        {post.cover_image ? (
           <Image
             imgStyle={{ objectFit: "cover" }}
             loading="eager"
-            fluid={post.frontmatter.featuredImage.childImageSharp.fluid}
+            fluid={post.cover_image.childImageSharp.fluid}
             alt={post.frontmatter.title}
           />
         ) : null}
@@ -39,14 +39,14 @@ export const query = graphql`
         title
         date(formatString: "DD MMMM, YYYY")
         excerpt
-        featuredImage {
-          childImageSharp {
-            fluid(
-              maxWidth: 2560
-              duotone: { highlight: "#F8F7FF", shadow: "#1E1E24" }
-              ) {
-              ...GatsbyImageSharpFluid
-            }
+      }
+      cover_image {
+        childImageSharp {
+          fluid(
+            maxWidth: 2560
+            duotone: { highlight: "#F8F7FF", shadow: "#1E1E24" }
+          ) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
