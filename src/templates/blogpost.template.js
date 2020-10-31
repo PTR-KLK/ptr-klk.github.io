@@ -23,7 +23,6 @@ export default function BlogPost({ data }) {
         <Header>
           <h1>{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
-          <p>{post.frontmatter.description}</p>
         </Header>
         <Section dangerouslySetInnerHTML={{ __html: post.html }} />
       </Layout>
