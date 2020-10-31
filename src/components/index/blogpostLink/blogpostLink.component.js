@@ -15,7 +15,7 @@ export default function BlogpostLink({ node }) {
         <h3>{node.frontmatter.title}</h3>
         <p>{node.frontmatter.date}</p>
       </Header>
-      <p>{node.frontmatter.excerpt}</p>
+      <p>{node.frontmatter.description}</p>
     </Container>
   )
 }

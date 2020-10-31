@@ -10,7 +10,7 @@ export default function BlogPost({ data }) {
     <>
       <Layout
         title={post.frontmatter.title}
-        description={post.frontmatter.excerpt}
+        description={post.frontmatter.description}
       >
         {post.cover_image ? (
           <Image
@@ -23,7 +23,7 @@ export default function BlogPost({ data }) {
         <Header>
           <h1>{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
-          <p>{post.frontmatter.excerpt}</p>
+          <p>{post.frontmatter.description}</p>
         </Header>
         <Section dangerouslySetInnerHTML={{ __html: post.html }} />
       </Layout>
@@ -38,7 +38,7 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "DD MMMM, YYYY")
-        excerpt
+        description
       }
       cover_image {
         childImageSharp {

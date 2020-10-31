@@ -1,8 +1,10 @@
 ---
 title: "This is my first post, and I published with help of GitHub Actions"
 date: "2020-10-18"
-excerpt: "When I heard about GitHub Actions and what are for I decided that I will use them someday. This day has come."
+description: "When I heard about GitHub Actions and what are for I decided that I will use them someday. This day has come."
 cover_image: https://dev-to-uploads.s3.amazonaws.com/i/tyqsw5u146wifn27zfbh.jpg
+tags: gatsby, github
+canonical_url: https://ptr-klk.github.io/posts/dev/first-post/
 ---
 
 That day the light bulb in my head lit up. With GitHub Actions, I can publish my blog and dev.to posts from the comfort of the terminal. The actions that I used to build and deploy the site are [Gatsby Publish](https://github.com/marketplace/actions/gatsby-publish) and [TheActionDev](https://github.com/marketplace/actions/theactiondev) for sending articles to dev.to. 
