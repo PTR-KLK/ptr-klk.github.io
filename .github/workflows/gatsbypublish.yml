@@ -3,8 +3,6 @@ name: Gatsby Publish
 on:
   push:
     branches: publish
-  pull_request:
-    branches: publish
 
 jobs:
   build:
@@ -20,5 +18,5 @@ jobs:
           gatsby-args: --prefix-paths
       - uses: ful1e5/TheActionDev@v2
         with:
-          api-key: ${{ secrets.DEVTO_API_KEY }} # Store your 'api-key' in Github Secret
-          directory: ./src/pages/posts/dev # Your article directory
+          api-key: ${{ secrets.DEVTO_API_KEY }}
+          directory: ./src/pages/posts/dev
