@@ -15,10 +15,10 @@ export default function Navbar({ fixed }) {
   const Menu = () => {
     return (
       <Section fixed={fixed} menuVisible={menuVisible}>
-        <Hyperlink fade duration={0.5} to={`/`}>
+        <Hyperlink to={`/`}>
           Blog
         </Hyperlink>{" "}
-        <Hyperlink fade duration={0.5} to={`/about/`}>
+        <Hyperlink to={`/about/`}>
           About
         </Hyperlink>
       </Section>
@@ -27,7 +27,7 @@ export default function Navbar({ fixed }) {
 
   return (
     <Nav fixed={fixed}>
-      <HomeHyperlink fade duration={0.5} to={`/`}>
+      <HomeHyperlink to={`/`}>
         <PageLogo fixed={fixed}>
           PTR<br/>KLK
         </PageLogo>

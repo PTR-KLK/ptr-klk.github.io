@@ -87,8 +87,8 @@ export default function About({ data }) {
             <Heading>Contact Me</Heading>
             <Social />
           </Figcaption>
+          <Footer light />
         </Contact>
-        <Footer light />
       </main>
     </>
   )

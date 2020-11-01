@@ -13,7 +13,7 @@ export default function Home({ data }) {
     >
       <Header />
       {data.allMarkdownRemark.edges.map(({ node }) => (
-        <Hyperlink key={node.id} to={node.fields.slug} fade duration={0.5}>
+        <Hyperlink key={node.id} to={node.fields.slug}>
           <BlogpostLink node={node} />
         </Hyperlink>
       ))}
