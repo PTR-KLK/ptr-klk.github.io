@@ -8,7 +8,7 @@ import BlogpostLink from "../components/index/blogpostLink/blogpostLink.componen
 export default function Home({ data }) {
   return (
     <Layout
-      title={"Main page"}
+      title={"Blog"}
       description={"Recent news from my journey in the web development world."}
     >
       <Header />

@@ -3,7 +3,6 @@ import { rhythm } from "../../../utils/typography"
 import { colors, breakpoints } from "../../../utils/theme"
 import {
   MarkGithubIcon,
-  TagIcon,
   ClockIcon,
   GlobeIcon,
 } from "@primer/octicons-react"
@@ -117,11 +116,6 @@ export const Circle = styled.span`
 `
 
 export const UpdatedIcon = styled(ClockIcon)`
-  margin: 0;
-  align-self: center;
-`
-
-export const TopicIcon = styled(TagIcon)`
   margin: 0;
   align-self: center;
 `

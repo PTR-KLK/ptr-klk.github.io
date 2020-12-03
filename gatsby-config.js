@@ -80,14 +80,6 @@ module.exports = {
                   description
                   url
                   homepageUrl
-                  repositoryTopics(first: 3) {
-                    nodes {
-                      url
-                      topic {
-                        name
-                      }
-                    }
-                  }
                   primaryLanguage {
                     name
                     color

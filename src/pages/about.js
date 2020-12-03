@@ -132,14 +132,6 @@ export const query = graphql`
                 name
                 url
                 homepageUrl
-                repositoryTopics {
-                  nodes {
-                    url
-                    topic {
-                      name
-                    }
-                  }
-                }
                 description
                 pushedAt
                 primaryLanguage {

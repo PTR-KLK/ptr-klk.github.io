@@ -4,7 +4,6 @@ import {
   Hyperlink,
   Footer,
   Circle,
-  TopicIcon,
   RepoIcon,
   DemoIcon,
   UpdatedIcon,
@@ -15,18 +14,6 @@ export default function Project({ element }) {
     <Li>
       <h3>{element.node.name}</h3>
       {element.node.description ? <p>{element.node.description}</p> : null}
-      {element.node.repositoryTopics.nodes.length > 0 ? (
-        <ul>
-          {element.node.repositoryTopics.nodes.map(e => (
-            <li key={e.topic.name}>
-              <Hyperlink href={e.url} target="_blank" rel="noopener noreferrer">
-                <TopicIcon size={12} />
-                <p>{e.topic.name}</p>
-              </Hyperlink>
-            </li>
-          ))}
-        </ul>
-      ) : null}
       <Footer>
         <span>
           <UpdatedIcon size={24} />
