@@ -1,0 +1,7 @@
+.gatsby-highlight {
+  box-shadow: 4px 4px 0px 0px rgba(41,191,18,0.8);
+}
+
+.gatsby-highlight pre[class*="language-"] {
+  margin: 1rem 0;
+}

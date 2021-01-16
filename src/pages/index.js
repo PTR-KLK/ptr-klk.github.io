@@ -1,58 +1,91 @@
-import React from "react"
-import Layout from "../components/layout/layout.component"
-import Header from "../components/header/header.component"
-import { Hyperlink } from "../components/index/index.style"
-import { graphql } from "gatsby"
-import BlogpostLink from "../components/index/blogpostLink/blogpostLink.component"
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/layout/layout";
+import Seo from "../components/seo";
+import Latest from "../components/latest/latest";
+import Graph from "../components/graph/graphWrapper";
+import Author from "../components/author";
+import MdxContent from "../components/mdxContent";
 
-export default function Home({ data }) {
+const Home = ({ data }) => {
+  const {
+    site: { siteMetadata },
+    graph: { nodes: graph },
+    projects: {
+      nodes: [projects],
+    },
+    contact: {
+      nodes: [contact],
+    },
+  } = data;
+
   return (
-    <Layout
-      title={"Blog"}
-      description={"Recent news from my journey in the web development world."}
-    >
-      <Header />
-      {data.allMarkdownRemark.edges.map(({ node }) => (
-        <Hyperlink key={node.id} to={node.fields.slug}>
-          <BlogpostLink node={node} />
-        </Hyperlink>
-      ))}
+    <Layout>
+      <Seo title="Index" description={siteMetadata.description} />
+      <Author />
+      <Latest />
+      <MdxContent body={projects.body}>
+        <h2>{projects.frontmatter.title}</h2>
+      </MdxContent>
+      <MdxContent body={contact.body}>
+        <h2>{contact.frontmatter.title}</h2>
+      </MdxContent>
+      <Graph data={graph} />
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query {
     site {
       siteMetadata {
         title
+        description
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "DD MMMM, YYYY")
-            description
-            tags
-          }
-          cover_image {
-            childImageSharp {
-              fluid(
-                maxWidth: 2560
-                duotone: { highlight: "#F8F7FF", shadow: "#1E1E24" }
-              ) {
-                ...GatsbyImageSharpFluid
-              }
+    graph: allMdx {
+      nodes {
+        id
+        frontmatter {
+          title
+        }
+        fields {
+          slug
+        }
+        outboundReferences {
+          ... on Mdx {
+            id
+            frontmatter {
+              title
             }
           }
-          fields {
-            slug
+        }
+        inboundReferences {
+          ... on Mdx {
+            id
+            frontmatter {
+              title
+            }
           }
         }
       }
     }
+    projects: allMdx(filter: { frontmatter: { title: { eq: "Projects" } } }) {
+      nodes {
+        frontmatter {
+          title
+        }
+        body
+      }
+    }
+    contact: allMdx(filter: { frontmatter: { title: { eq: "Contact" } } }) {
+      nodes {
+        frontmatter {
+          title
+        }
+        body
+      }
+    }
   }
-`
+`;
+export default Home;

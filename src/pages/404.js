@@ -1,25 +1,33 @@
-import React from "react"
-import Layout from "../components/layout/layout.component"
-import Header from "../components/header/header.component"
-import styled from "@emotion/styled"
-import { rhythm } from "../utils/typography"
-import { breakpoints } from "../utils/theme"
+import React from "react";
+import Layout from "../components/layout/layout";
+import styled from "styled-components";
+import { sectionContainer } from "../components/sectionContainer";
 
-const P = styled.p`
-  text-align: center;
-  padding: ${rhythm(0.5)};
-  margin: 0;
+const Info = styled.section`
+  width: calc(100% - 2px - 2rem);
+  height: 50vh;
+  color: ${(props) => props.theme.text};
+  justify-content: center;
+  ${({ theme }) => sectionContainer(theme)}
 
-  @media (min-width: ${breakpoints.tablet}) {
-    padding: ${rhythm(1)};
+  h2 {
+    align-self: center;
   }
-`
+`;
 
-export default function Home() {
+const Message = styled.h3`
+  text-align: center;
+  flex: 1;
+`;
+const NotFound = () => {
   return (
     <Layout>
-      <Header title="404" />
-      <P>Page not found</P>
+      <Info>
+        <h2>404</h2>
+      </Info>
+      <Message>I don't recall that page.</Message>
     </Layout>
-  )
-}
+  );
+};
+
+export default NotFound;

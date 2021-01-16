@@ -1,53 +1,108 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.org/docs/gatsby-config/
- */
-
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
-
 module.exports = {
   siteMetadata: {
-    title: `PTR-KLK Site`,
-    description: `PTR-KLK personal blog and portfolio`,
+    title: `Ptr-Klk`,
+    description: `Ptr-Klk personal blog and portfolio`,
     author: `ptrklk`,
     authorSite: `https://ptr-klk.github.io`,
-    template: "https://github.com/gatsbyjs/gatsby-starter-hello-world",
-    created: "2020",
+    template: "https://github.com/PTR-KLK/electron-brain",
+    year: "2021",
   },
   plugins: [
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `PTR-KLK Site`,
-        short_name: `PTR-KLK`,
+        name: `Ptr-Klk Electron Brain`,
+        short_name: `Ptr-Klk`,
         start_url: `/`,
-        background_color: `#645DD7`,
-        theme_color: `#F8F7FF`,
-        // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
-        // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
+        background_color: `#6b37bf`,
+        theme_color: `#ffffff`,
         display: `standalone`,
-        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`,
+        icons: [
+          {
+            src: `icons/favicon-8x8.ico`,
+            sizes: `8x8`,
+            purpose: `maskable`,
+          },
+          {
+            src: `icons/favicon-16x16.ico`,
+            sizes: `16x16`,
+            purpose: `maskable`,
+          },
+          {
+            src: `icons/favicon-24x24.ico`,
+            sizes: `24x24`,
+            purpose: `maskable`,
+          },
+          {
+            src: `icons/favicon-32x32.ico`,
+            sizes: `32x32`,
+            purpose: `maskable`,
+          },
+          {
+            src: `icons/icon-144x144.png`,
+            sizes: `144x144`,
+            type: `image/png`,
+            purpose: `maskable`,
+          },
+          {
+            src: `icons/icon-192x192.png`,
+            sizes: `192x192`,
+            type: `image/png`,
+            purpose: `maskable`,
+          },
+          {
+            src: `icons/icon-512x512.png`,
+            sizes: `512x512`,
+            type: `image/png`,
+            purpose: `maskable`,
+          },
+        ],
       },
     },
-    `gatsby-plugin-anchor-links`,
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/`,
+        name: `pages`,
+        path: `${__dirname}/src/pages/`,
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        plugins: [
-          `gatsby-remark-responsive-iframe`,
+        name: `images`,
+        path: `${__dirname}/src/images/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-git`,
+      options: {
+        name: `notes`,
+        // remote repo name
+        remote: `https://github.com/PTR-KLK/notes.git`,
+        // remote repo url with *.md notes
+        branch: `master`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-double-brackets-link`,
+            options: {
+              stripBrackets: true,
+            },
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 768,
+              withWebp: true,
+              tracedSVG: true,
+            },
+          },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {},
@@ -55,43 +110,42 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-emotion`,
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: `gatsby-transformer-markdown-references`,
       options: {
-        pathToConfigModule: `src/utils/typography`,
+        types: ["Mdx"],
       },
     },
     {
-      resolve: `gatsby-source-github-api`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        token: process.env.GATSBY_API_TOKEN,
-        graphQLQuery: `query {
-          user(login: "PTR-KLK") {
-            url
-            avatarUrl
-            isHireable
-            name
-            login
-            repositories(first: 8, orderBy: {field: UPDATED_AT, direction: DESC}, privacy: PUBLIC, isFork: false) {
-              edges {
-                node {
-                  name
-                  description
-                  url
-                  homepageUrl
-                  primaryLanguage {
-                    name
-                    color
-                  }
-                  pushedAt
-                }
-              }
-            }
-          }
-        }   
-        `,
+        fonts: {
+          google: [
+            {
+              family: "Montserrat",
+              variants: ["400", "700"],
+            },
+            {
+              family: "Inconsolata",
+              variants: ["400", "700"],
+            },
+          ],
+        },
+        useMinify: true,
+        usePreload: true,
       },
     },
+    {
+      resolve: `gatsby-styled-components-dark-mode`,
+      options: {
+        light: require(`${__dirname}/theme.js`).lightTheme,
+        dark: require(`${__dirname}/theme.js`).darkTheme,
+      },
+    },
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ],
-}
+};

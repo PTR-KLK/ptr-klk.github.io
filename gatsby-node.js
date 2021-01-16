@@ -1,45 +1,30 @@
-const { createFilePath } = require(`gatsby-source-filesystem`)
-const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
-const path = require(`path`)
+const path = require(`path`);
+const slugify = require("slugify");
 
-exports.onCreateNode = async ({
-  node,
-  getNode,
-  actions,
-  cache,
-  createNodeId,
-}) => {
-  const { createNodeField } = actions
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
+const createSlug = (node) => {
+  const absolutePathArr = node.fileAbsolutePath.split("/");
+  const fileName = absolutePathArr.slice(-1)[0].split(".")[0];
+
+  return `/${slugify(fileName)}`;
+};
+
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions;
+
+  if (node.internal.type === `Mdx`) {
     createNodeField({
       node,
       name: `slug`,
-      value: slug,
-    })
+      value: createSlug(node),
+    });
   }
-  if (node.internal.type === "MarkdownRemark" && node.frontmatter.cover_image) {
-    let fileNode = await createRemoteFileNode({
-      url: node.frontmatter.cover_image,
-      parentNodeId: node.id,
-      createNode: actions.createNode,
-      createNodeId,
-      cache,
-    })
-
-    if (fileNode) {
-      node.cover_image___NODE = fileNode.id
-    }
-  }
-}
+};
 
 exports.createPages = async ({ graphql, actions }) => {
-  // **Note:** The graphql function call returns a Promise
-  // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
-  const { createPage } = actions
+  const { createPage } = actions;
   const result = await graphql(`
     query {
-      allMarkdownRemark {
+      allMdx {
         edges {
           node {
             fields {
@@ -49,17 +34,14 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `)
-
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  `);
+  result.data.allMdx.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve(`./src/templates/blogpost.template.js`),
+      component: path.resolve(`./src/components/notePage/notePage.js`),
       context: {
-        // Data passed to context is available
-        // in page queries as GraphQL variables.
         slug: node.fields.slug,
       },
-    })
-  })
-}
+    });
+  });
+};
