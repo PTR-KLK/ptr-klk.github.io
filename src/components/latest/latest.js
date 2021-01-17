@@ -8,7 +8,7 @@ const Latest = () => {
   } = useStaticQuery(graphql`
     query {
       latest: allMdx(
-        limit: 10
+        limit: 5
         sort: { fields: frontmatter___last_modified, order: DESC }
       ) {
         edges {

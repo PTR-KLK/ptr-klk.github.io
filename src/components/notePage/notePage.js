@@ -39,6 +39,14 @@ export const query = graphql`
         date
         description
         last_modified
+        cover_image_alt
+        cover_image {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       fields {
         slug

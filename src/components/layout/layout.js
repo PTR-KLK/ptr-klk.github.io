@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import { rgba, darken, lighten } from "polished";
+import { rgba } from "polished";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
