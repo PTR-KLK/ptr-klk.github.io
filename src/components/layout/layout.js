@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import { rgba } from "polished";
+import { rgba, darken, lighten } from "polished";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
@@ -18,15 +18,19 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: ${(props) => props.theme.secondary};
-  }
-
-  a:visited {
     color: ${(props) => props.theme.text};
   }
 
-  a:hover, a:active {
+  a:visited {
+    color: unset;
+  }
+
+  a:hover, a:active, a[target="_blank"]:hover {
     color: ${(props) => props.theme.accent};
+  }
+
+  a[target="_blank"] {
+    color: ${(props) => props.theme.secondary};
   }
 
   ul {
