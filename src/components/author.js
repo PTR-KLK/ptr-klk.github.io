@@ -10,47 +10,40 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem 0 2rem;
+  margin: 1rem 0 1.625rem;
 
   h2 {
-    line-height: 2.875rem;
-    position: absolute;
-    top: calc(194px - 2.875rem);
-    margin: 0;
-    left: 1rem;
     font-size: 4rem;
+    line-height: 3rem;
+    margin: 1rem 1rem 0;
     font-family: "Inconsolata", monospace;
     display: block;
     color: ${({ theme }) => theme.secondary};
   }
 
   p {
-    position: relative;
     text-align: justify;
     margin: 1rem;
-  }
-
-  @media (min-width: 320px) {
-    h2 {
-      top: calc(256px - 3.375rem);
-      line-height: 3.375rem;
-      font-size: 5rem;
-    }
   }
 
   @media (min-width: 768px) {
     flex-direction: row;
     border: none;
-    margin: calc(2rem + 5px) 0 3rem;
+    margin: calc(2rem + 5px) 0 2.625rem;
     padding: 0;
 
+    section {
+      position: relative;
+      top: -0.375rem;
+    }
+
     h2 {
-      left: 141px;
-      top: 0;
+      margin: 0 1rem;
+      font-size: 4rem;
+      line-height: 3rem;
     }
 
     p {
-      top: 2rem;
       margin: 1rem calc(2rem + 5px) 1rem 1rem;
     }
   }
@@ -152,8 +145,9 @@ const Author = () => {
     <Container>
       <Stripes />
       <Image fluid={me.childImageSharp.fluid} objectFit="cover" alt="" />
-      <h2>Hello!</h2>
-      <MdxContent body={about.body} />
+      <MdxContent body={about.body}>
+        <h2>Hello!</h2>
+      </MdxContent>
     </Container>
   );
 };

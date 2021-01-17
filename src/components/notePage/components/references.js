@@ -1,21 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { sectionContainer } from "../../sectionContainer";
 import { Link } from "gatsby";
 
 const Container = styled.section`
-  flex-direction: column;
-  padding: 1rem 0;
-  margin: 0 0 1rem;
-  ${({ theme }) => sectionContainer(theme)}
-
-  p {
-    margin: 0 1rem;
-    font-weight: bold;
-  }
+  width: calc(100% - 2rem);
+  border: 2px dashed ${(props) => props.theme.secondary};
+  margin: 1rem 0;
+  padding: 0 1rem;
 
   ul {
-    margin: 1rem 0 0;
+    margin: 1rem 0;
   }
 `;
 
@@ -24,7 +18,7 @@ const References = ({ arr, heading }) => {
 
   return (
     <Container>
-      <p>{heading}</p>
+      <h3>{heading}</h3>
       <ul>
         {arr.map((el) => {
           return (

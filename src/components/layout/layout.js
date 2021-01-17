@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import { rgba } from "polished";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
@@ -31,6 +32,14 @@ const GlobalStyle = createGlobalStyle`
   ul {
     list-style: square;
     padding: 0 0 0 2rem;
+  }
+
+  .gatsby-highlight {
+    box-shadow: 4px 4px 0px 0px ${(props) => rgba(props.theme.secondary, 0.8)};
+  }
+
+  .gatsby-highlight pre[class*="language-"] {
+    margin: 1rem 0;
   }
 `;
 

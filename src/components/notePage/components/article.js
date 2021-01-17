@@ -7,14 +7,13 @@ const Container = styled.article`
   width: 100%;
   height: 100%;
   flex: 1;
-  margin: 1rem 0;
 
   h2 {
-    margin: 0 0 1.25rem;
+    margin: 1.25rem 0;
   }
 
-  hr {
-    border: 1px dashed ${({ theme }) => theme.secondary};
+  section {
+    border-top: 2px dashed ${(props) => props.theme.secondary};
   }
 
   .gatsby-resp-image-wrapper {
@@ -48,7 +47,6 @@ const Article = ({ data }) => {
         ) : null}
       </p>
       <p>{description}</p>
-      <hr />
       <MdxContent body={body} />
     </Container>
   );

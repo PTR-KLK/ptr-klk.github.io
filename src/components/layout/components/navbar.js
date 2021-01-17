@@ -10,7 +10,7 @@ const Container = styled.nav`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   margin: 0 0 1rem;
   border-bottom: 2px dashed ${(props) => props.theme.secondary};
 
