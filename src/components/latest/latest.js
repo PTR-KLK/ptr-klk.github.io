@@ -1,6 +1,11 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import styled from "styled-components";
 import List from "./components/list";
+
+const Container = styled.section`
+  width: 100%;
+`;
 
 const Latest = () => {
   const {
@@ -8,7 +13,7 @@ const Latest = () => {
   } = useStaticQuery(graphql`
     query {
       latest: allMdx(
-        limit: 5
+        limit: 3
         sort: { fields: frontmatter___last_modified, order: DESC }
       ) {
         edges {
@@ -30,10 +35,10 @@ const Latest = () => {
   `);
 
   return (
-    <section>
+    <Container>
       <h2>Latest updates:</h2>
       <List list={latest} />
-    </section>
+    </Container>
   );
 };
 

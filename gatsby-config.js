@@ -2,6 +2,16 @@ module.exports = {
   siteMetadata: {
     title: `Ptr-Klk`,
     description: `Ptr-Klk personal blog and portfolio`,
+    menuLinks: [
+      {
+        name: "Projects",
+        link: "/projects",
+      },
+      {
+        name: "Contact",
+        link: "/contact",
+      },
+    ],
     author: `ptrklk`,
     authorSite: `https://ptr-klk.github.io`,
     template: "https://github.com/PTR-KLK/electron-brain",
