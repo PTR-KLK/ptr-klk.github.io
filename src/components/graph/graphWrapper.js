@@ -1,6 +1,6 @@
 import React, { useState, Suspense } from "react";
 import styled from "styled-components";
-import { sectionContainer } from "../sectionContainer";
+import { boxShadow } from "../boxShadow";
 import { reveal } from "../reveal";
 
 const Graph = React.lazy(() => fakeDelay(500)(import("./graph")));
@@ -9,7 +9,11 @@ const Container = styled.section`
   height: 50vh;
   justify-content: center;
   margin: 1rem 0;
-  ${({ theme }) => sectionContainer(theme)}
+  border: none;
+  background: ${({ theme }) => theme.primary};
+  display: flex;
+  width: 100%;
+  ${({ theme }) => boxShadow(theme)}
 
   p {
     align-self: center;

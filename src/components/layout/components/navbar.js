@@ -15,7 +15,7 @@ const Container = styled.nav`
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  border-bottom: 2px dashed ${(props) => props.theme.secondary};
+  border-bottom: 2px solid ${(props) => props.theme.secondary};
   padding: 1rem 0;
   margin: 0 0 1rem;
 

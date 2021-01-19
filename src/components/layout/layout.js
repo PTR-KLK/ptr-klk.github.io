@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import { rgba } from "polished";
+import { boxShadow } from "../boxShadow";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
@@ -39,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .gatsby-highlight {
-    box-shadow: 4px 4px 0px 0px ${(props) => rgba(props.theme.secondary, 0.8)};
+    ${({ theme }) => boxShadow(theme)};
   }
 
   .gatsby-highlight pre[class*="language-"] {

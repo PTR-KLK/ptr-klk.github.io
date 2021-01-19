@@ -9,7 +9,7 @@ const lightTheme = {
 const darkTheme = {
   body: "#22222F",
   text: "#F1E9DB",
-  primary: "#45455F",
+  primary: "#1A1A23",
   secondary: "#379634",
   accent: "#CB48B7",
 };

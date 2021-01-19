@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { lighten } from "polished";
+import { darken } from "polished";
 import Img from "gatsby-image";
-import { sectionContainer } from "../../sectionContainer";
+import { boxShadow } from "../../boxShadow";
 import MdxContent from "../../mdxContent";
 
 const Container = styled.article`
@@ -14,24 +14,18 @@ const Container = styled.article`
     margin: 1.25rem 0;
   }
 
-  section {
-    border-top: 2px dashed ${(props) => props.theme.secondary};
-  }
-
   .gatsby-image-wrapper,
   .gatsby-resp-image-wrapper {
-    ${({ theme }) => sectionContainer(theme)};
+    ${({ theme }) => boxShadow(theme)};
     width: 100%;
     margin: 1rem 0 0.5rem;
   }
 
   blockquote {
-    ${({ theme }) => sectionContainer(theme)};
-    display: block;
-    width: unset;
+    ${({ theme }) => boxShadow(theme)};
     margin: 1rem 0;
-    border-left: 10px solid ${(props) => lighten(-0.05, props.theme.primary)};
-    background: ${(props) => lighten(0.05, props.theme.primary)};
+    border-left: 10px solid ${(props) => darken(0.15, props.theme.primary)};
+    background: ${(props) => props.theme.primary};
     padding: 1rem;
 
     p:first-of-type {
@@ -42,6 +36,10 @@ const Container = styled.article`
       margin-bottom: 0;
     }
   }
+`;
+
+const Info = styled.section`
+  border-bottom: 2px solid ${({ theme }) => theme.secondary};
 `;
 
 const convertDate = (str) => {
@@ -64,20 +62,25 @@ const Article = ({ data }) => {
 
   return (
     <Container>
-      {cover_image && cover_image_alt ? (
-        <Img fluid={cover_image.childImageSharp.fluid} alt={cover_image_alt} />
-      ) : null}
-      <h2>{title}</h2>
-      <p>
-        <span>Published:</span> {convertDate(date)}
-        {last_modified !== date ? (
-          <>
-            {` | `} <span>Modified:</span>
-            {convertDate(last_modified)}
-          </>
+      <Info>
+        {cover_image && cover_image_alt ? (
+          <Img
+            fluid={cover_image.childImageSharp.fluid}
+            alt={cover_image_alt}
+          />
         ) : null}
-      </p>
-      <p>{description}</p>
+        <h2>{title}</h2>
+        <p>
+          <span>Published:</span> {convertDate(date)}
+          {last_modified !== date ? (
+            <>
+              {` | `} <span>Modified:</span>
+              {convertDate(last_modified)}
+            </>
+          ) : null}
+        </p>
+        <p>{description}</p>
+      </Info>
       <MdxContent body={body} />
     </Container>
   );

@@ -1,10 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
+import { boxShadow } from "../../boxShadow";
 
 const Container = styled.section`
+  position: relative;
   width: calc(100% - 2rem);
-  border: 2px dashed ${(props) => props.theme.secondary};
+  background: ${({ theme }) => theme.primary};
+  ${({ theme }) => boxShadow(theme)};
   margin: 1rem 0;
   padding: 0 1rem;
 

@@ -7,7 +7,7 @@ const Container = styled.footer`
   width: 100%;
   margin: 1rem 0 0;
   padding: 0.5rem 0;
-  border-top: 2px dashed ${(props) => props.theme.secondary};
+  border-top: 2px solid ${(props) => props.theme.secondary};
 
   p {
     margin: 0;
