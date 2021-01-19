@@ -11,9 +11,34 @@ const Container = styled.section`
   margin: 1rem 0;
   padding: 1rem 1rem 0;
   text-align: justify;
-  background: ${({ theme }) => theme.primary};
   display: flex;
-  ${({ theme }) => boxShadow(theme)};
+  border: 2px solid ${({ theme }) => theme.secondary};
+
+  p {
+    margin: 1.125rem 0;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -2px;
+    height: 50%;
+    width: 2px;
+    z-index: 2;
+    background: ${({ theme }) => theme.body};
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: -2px;
+    top: 0;
+    width: 2px;
+    height: 50%;
+    z-index: 2;
+    background: ${({ theme }) => theme.body};
+  }
 `;
 
 const Image = styled(Img)`
@@ -23,20 +48,20 @@ const Image = styled(Img)`
   margin: 1rem auto;
   height: auto;
 
-  @media (min-width: 433px) {
+  @media (min-width: 484px) {
     margin: 0 calc(1rem + 2px) calc(0.5rem + 2px) 0;
     float: left;
   }
 
   @media (min-width: 768px) {
-    max-width: 256px;
+    max-width: 224px;
   }
 `;
 
 const Hello = styled.h2`
   font-size: 3rem;
   line-height: 2rem;
-  margin: 0 0 1rem;
+  margin: 0 0 1.5rem;
   color: ${({ theme }) => theme.secondary};
 `;
 
