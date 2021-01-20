@@ -5,24 +5,17 @@ import Seo from "../components/seo";
 import Latest from "../components/latest/latest";
 import Graph from "../components/graph/graphWrapper";
 import Author from "../components/author";
-import MdxContent from "../components/mdxContent";
 
 const Home = ({ data }) => {
   const {
     site: { siteMetadata },
     graph: { nodes: graph },
-    recommended: {
-      nodes: [recommended],
-    },
   } = data;
 
   return (
     <Layout>
       <Seo title="Index" description={siteMetadata.description} />
       <Author />
-      <MdxContent body={recommended.body}>
-        <h2>{recommended.frontmatter.title}</h2>
-      </MdxContent>
       <Latest />
       <Graph data={graph} />
     </Layout>
@@ -62,16 +55,6 @@ export const query = graphql`
             }
           }
         }
-      }
-    }
-    recommended: allMdx(
-      filter: { frontmatter: { title: { eq: "Recommended" } } }
-    ) {
-      nodes {
-        frontmatter {
-          title
-        }
-        body
       }
     }
   }

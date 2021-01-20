@@ -6,46 +6,17 @@ import MdxContent from "../components/mdxContent";
 import { boxShadow } from "./boxShadow";
 
 const Container = styled.section`
-  position: relative;
-  width: calc(100% - 2rem);
-  margin: 1rem 0;
-  padding: 1rem 1rem 0;
+  width: 100%;
+  margin: 1rem 0 0;
   text-align: justify;
   display: flex;
-  border: 2px solid ${({ theme }) => theme.secondary};
-
-  p {
-    margin: 1.125rem 0;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: -2px;
-    height: 50%;
-    width: 2px;
-    z-index: 2;
-    background: ${({ theme }) => theme.body};
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    right: -2px;
-    top: 0;
-    width: 2px;
-    height: 50%;
-    z-index: 2;
-    background: ${({ theme }) => theme.body};
-  }
 `;
 
 const Image = styled(Img)`
   ${({ theme }) => boxShadow(theme)};
   width: 100%;
   max-width: 192px;
-  margin: 1rem auto;
+  margin: 0 auto 1rem;
   height: auto;
 
   @media (min-width: 484px) {
@@ -54,14 +25,14 @@ const Image = styled(Img)`
   }
 
   @media (min-width: 768px) {
-    max-width: 224px;
+    max-width: 228px;
   }
 `;
 
 const Hello = styled.h2`
   font-size: 3rem;
   line-height: 2rem;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
   color: ${({ theme }) => theme.secondary};
 `;
 

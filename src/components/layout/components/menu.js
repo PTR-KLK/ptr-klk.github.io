@@ -7,21 +7,16 @@ const Container = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: 1rem 0 0;
 
   p {
     font-size: 1.125rem;
-    margin: 0;
+    margin: 1rem 0 0;
   }
 
   a {
     font-family: "Inconsolata", monospace;
     text-decoration: none;
     color: ${(props) => props.theme.text};
-  }
-
-  a:first-of-type {
-    margin: 0 0 1rem;
   }
 
   a:visited {
