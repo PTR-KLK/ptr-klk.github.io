@@ -40,6 +40,13 @@ const Container = styled.article`
 
 const Info = styled.section`
   border-bottom: 2px solid ${({ theme }) => theme.secondary};
+  width: calc(100% - 1rem);
+  max-width: 768px;
+  margin: 0 auto;
+
+  @media (min-width: 425px) {
+    width: calc(100% - 2rem);
+  }
 `;
 
 const convertDate = (str) => {

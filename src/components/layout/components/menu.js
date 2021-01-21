@@ -28,7 +28,7 @@ const Container = styled.section`
     color: ${(props) => props.theme.accent};
   }
 
-  @media (min-width: 738px) {
+  @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
     order: 2;
@@ -36,7 +36,7 @@ const Container = styled.section`
     margin: 0;
 
     p {
-      margin: 0 0 0 1rem;
+      margin: 0.25rem 0.5rem;
     }
 
     a:first-of-type {

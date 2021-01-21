@@ -35,8 +35,12 @@ const Container = styled.section`
     color: ${(props) => props.theme.accent};
   }
 
-  @media (min-width: 738px) {
+  @media (min-width: 768px) {
     order: 3;
+
+    button {
+      margin: 0 0.5rem;
+    }
   }
 `;
 

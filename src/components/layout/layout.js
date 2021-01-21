@@ -51,15 +51,10 @@ const Container = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: calc(100% - 1rem);
-  max-width: 768px;
+  width: 100%;
   height: 100%;
   min-height: 100vh;
   margin: 0 auto;
-
-  @media (min-width: 320px) {
-    width: calc(100% - 2rem);
-  }
 `;
 
 const Layout = ({ children, button }) => {

@@ -5,7 +5,6 @@ import { useStaticQuery, graphql } from "gatsby";
 const Container = styled.footer`
   justify-content: center;
   width: 100%;
-  margin: 1rem 0 0;
   padding: 1rem 0;
   border-top: 2px solid ${(props) => props.theme.secondary};
 
@@ -14,6 +13,10 @@ const Container = styled.footer`
     font-size: 1.25rem;
     text-align: center;
     font-family: "Inconsolata", monospace;
+  }
+
+  @media (min-width: 768px) {
+    margin: 1rem 0 0;
   }
 `;
 

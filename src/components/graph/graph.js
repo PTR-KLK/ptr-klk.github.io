@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled, { withTheme } from "styled-components";
 import Graph from "react-graph-vis";
+import { FaLock, FaLockOpen } from "react-icons/fa";
 import navigation from "./components/navigation";
 import createGraphData from "./components/createGraphData";
 import options from "./components/options";
@@ -19,6 +20,30 @@ const Container = styled.figure`
     margin: 1rem;
     bottom: 0;
     left: 0;
+  }
+`;
+
+const Button = styled.button`
+  border: none;
+  background: none;
+  color: ${({ theme }) => theme.text};
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0.5rem;
+
+  svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  @media (min-width: 425px) {
+    margin: 1rem;
+
+    svg {
+      width: 1.825rem;
+      height: 1.825rem;
+    }
   }
 `;
 
@@ -59,7 +84,7 @@ const GraphComponent = withTheme(({ graphActive, data, theme }) => {
           });
         }}
       />
-      {!graphActive ? <p>Tap or click to zoom or move</p> : null}
+      <Button>{!graphActive ? <FaLock /> : <FaLockOpen />}</Button>
     </Container>
   );
 });

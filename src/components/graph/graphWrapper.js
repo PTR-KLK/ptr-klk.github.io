@@ -1,19 +1,16 @@
 import React, { useState, Suspense } from "react";
 import styled from "styled-components";
-import { boxShadow } from "../boxShadow";
 import { reveal } from "../reveal";
 
 const Graph = React.lazy(() => fakeDelay(500)(import("./graph")));
 
 const Container = styled.section`
-  height: 50vh;
+  height: calc(100vh - 3rem - 2px);
   justify-content: center;
-  margin: 1rem 0;
   border: none;
   background: ${({ theme }) => theme.primary};
   display: flex;
   width: 100%;
-  ${({ theme }) => boxShadow(theme)}
 
   p {
     align-self: center;
@@ -25,11 +22,19 @@ const Container = styled.section`
   .vis-network:focus {
     outline: none;
   }
+
+  @media (min-width: 425px) {
+    height: calc(100vh - 4rem - 2px);
+  }
+
+  @media (min-width: 768px) {
+    height: 50vh;
+  }
 `;
 
 const Fallback = styled.p`
   font-size: 1.5rem;
-  animation: ${reveal} 250ms linear 250ms reverse forwards;
+  animation: ${reveal} 125ms linear 125ms reverse forwards;
 `;
 
 // https://stackoverflow.com/questions/54158994/react-suspense-lazy-delay

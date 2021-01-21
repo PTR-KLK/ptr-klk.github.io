@@ -1,10 +1,6 @@
 const options = (graphActive, theme) => ({
   height: "100%",
   width: "100%",
-  layout: {
-    improvedLayout: true,
-    randomSeed: 1,
-  },
   edges: {
     width: 2,
     color: theme.secondary,
@@ -15,8 +11,7 @@ const options = (graphActive, theme) => ({
     },
   },
   nodes: {
-    fixed: true,
-    shape: "square",
+    shape: "dot",
     size: 8,
     color: {
       border: theme.text,
@@ -36,9 +31,6 @@ const options = (graphActive, theme) => ({
       face: "Inconsolata",
       size: 16,
     },
-  },
-  physics: {
-    enabled: false,
   },
   interaction: {
     dragView: graphActive,
