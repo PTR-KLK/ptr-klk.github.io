@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import { Container } from "./list.style";
 
 const convertDate = (str) => {
   const date = new Date(str);
@@ -17,13 +18,16 @@ const ListItem = ({ data }) => {
     </li>
   );
 };
-const List = ({ list, details }) => {
+const List = ({ heading, list, details }) => {
   return (
-    <ul>
-      {list.map(({ node }) => (
-        <ListItem data={node} key={node.id} details={details} />
-      ))}
-    </ul>
+    <Container>
+      <h2>{heading}</h2>
+      <ul>
+        {list.map(({ node }) => (
+          <ListItem data={node} key={node.id} details={details} />
+        ))}
+      </ul>
+    </Container>
   );
 };
 

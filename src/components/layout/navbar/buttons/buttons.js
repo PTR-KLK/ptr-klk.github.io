@@ -1,56 +1,33 @@
 import React, { useContext } from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
 import { ThemeManagerContext } from "gatsby-styled-components-dark-mode";
-import { FaSun, FaMoon, FaChevronDown, FaChevronUp } from "react-icons/fa";
-import useWidth from "./useWidth";
+import {
+  FaProjectDiagram,
+  FaSun,
+  FaMoon,
+  FaChevronDown,
+  FaChevronUp,
+} from "react-icons/fa";
+import useWidth from "./useWidth/useWidth";
+import { Container } from "./buttons.style";
 
 const mapStateToProps = ({ menuVisible }) => {
   return { menuVisible };
 };
 
-const Container = styled.section`
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-
-  svg {
-    width: 1.75rem;
-    height: 1.75rem;
-  }
-
-  button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    margin: 0 0 0 1rem;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: ${(props) => props.theme.text};
-  }
-
-  button:hover {
-    color: ${(props) => props.theme.accent};
-  }
-
-  @media (min-width: 768px) {
-    order: 3;
-
-    button {
-      margin: 0 0.5rem;
-    }
-  }
-`;
-
-const Buttons = ({ children, menuVisible, toggleMenuVisible }) => {
+const Buttons = ({ menuVisible, toggleMenuVisible, toggleGraph }) => {
   const themeContext = useContext(ThemeManagerContext);
   const width = useWidth();
 
   return (
     <Container>
-      {children}
+      <button
+        aria-label="Toggle graph"
+        title="Toggle graph"
+        onClick={toggleGraph}
+      >
+        <FaProjectDiagram />
+      </button>
       <button
         aria-label="Toggle dark mode"
         title="Toggle dark mode"
@@ -72,7 +49,10 @@ const Buttons = ({ children, menuVisible, toggleMenuVisible }) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return { toggleMenuVisible: () => dispatch({ type: `TOGGLE_MENU_VISIBLE` }) };
+  return {
+    toggleMenuVisible: () => dispatch({ type: `TOGGLE_MENU_VISIBLE` }),
+    toggleGraph: () => dispatch({ type: `TOGGLE_GRAPH` }),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Buttons);

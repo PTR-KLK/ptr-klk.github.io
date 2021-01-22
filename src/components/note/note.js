@@ -1,22 +1,21 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../layout/layout";
-import References from "./components/references";
-import Article from "./components/article";
+import References from "./references/references";
+import Article from "./article/article";
 import Graph from "../graph/graphWrapper";
-import Seo from "../seo";
-import GraphButton from "./components/graphButton";
+import Seo from "../seo/seo";
 import { connect } from "react-redux";
 
 const mapStateToProps = ({ graph }) => {
   return { graph };
 };
 
-const NotePage = ({ data, graph }) => {
+const Note = ({ data, graph }) => {
   const note = data.mdx;
 
   return (
-    <Layout button={<GraphButton />}>
+    <Layout>
       <Seo
         title={note.frontmatter.title}
         description={note.frontmatter.description}
@@ -77,4 +76,4 @@ export const query = graphql`
   }
 `;
 
-export default connect(mapStateToProps, null)(NotePage);
+export default connect(mapStateToProps, null)(Note);

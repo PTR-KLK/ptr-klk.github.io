@@ -1,8 +1,6 @@
-import React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
 
-const Container = styled.section`
+export const Container = styled.section`
   display: ${({ visible }) => (visible ? "flex" : "none")};
   flex-direction: column;
   align-items: center;
@@ -44,17 +42,3 @@ const Container = styled.section`
     }
   }
 `;
-
-const Menu = ({ menuLinks, visible }) => {
-  return (
-    <Container visible={visible}>
-      {menuLinks.map((el) => (
-        <Link key={el.name} to={el.link}>
-          <p>{el.name}</p>
-        </Link>
-      ))}
-    </Container>
-  );
-};
-
-export default Menu;

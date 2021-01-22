@@ -1,51 +1,11 @@
 import React, { useState, useEffect } from "react";
-import styled, { withTheme } from "styled-components";
+import { withTheme } from "styled-components";
 import Graph from "react-graph-vis";
 import { FaLock, FaLockOpen } from "react-icons/fa";
-import navigation from "./components/navigation";
-import createGraphData from "./components/createGraphData";
-import options from "./components/options";
-import { reveal } from "../reveal";
-
-const Container = styled.figure`
-  animation: ${reveal} 250ms linear forwards;
-  opacity: 0;
-  position: relative;
-  margin: 0;
-  width: 100%;
-  height: auto;
-
-  p {
-    position: absolute;
-    margin: 1rem;
-    bottom: 0;
-    left: 0;
-  }
-`;
-
-const Button = styled.button`
-  border: none;
-  background: none;
-  color: ${({ theme }) => theme.text};
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 0.5rem;
-
-  svg {
-    width: 1.75rem;
-    height: 1.75rem;
-  }
-
-  @media (min-width: 425px) {
-    margin: 1rem;
-
-    svg {
-      width: 1.825rem;
-      height: 1.825rem;
-    }
-  }
-`;
+import navigation from "./navigation/navigation";
+import createGraphData from "./createGraphData/createGraphData";
+import options from "./options/options";
+import { Container, Button } from "./graph.style";
 
 const GraphComponent = withTheme(({ data, theme }) => {
   const [network, setNetwork] = useState({});
