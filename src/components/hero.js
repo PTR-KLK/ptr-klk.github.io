@@ -75,7 +75,11 @@ const Hero = () => {
     <Container>
       <Graph data={graph} />
       {authorVisible ? <Author /> : null}
-      <AuthorButton onClick={() => setAuthorVisible(!authorVisible)}>
+      <AuthorButton
+        aria-label="Toggle author info"
+        title="Toggle author info"
+        onClick={() => setAuthorVisible(!authorVisible)}
+      >
         {authorVisible ? <FaUserAlt /> : <FaUserAltSlash />}
       </AuthorButton>
     </Container>

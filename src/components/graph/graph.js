@@ -47,8 +47,9 @@ const Button = styled.button`
   }
 `;
 
-const GraphComponent = withTheme(({ graphActive, data, theme }) => {
+const GraphComponent = withTheme(({ data, theme }) => {
   const [network, setNetwork] = useState({});
+  const [graphActive, setGraphActive] = useState(false);
   const graphData = createGraphData(data);
   const events = {
     select: navigation(graphData),
@@ -84,7 +85,13 @@ const GraphComponent = withTheme(({ graphActive, data, theme }) => {
           });
         }}
       />
-      <Button>{!graphActive ? <FaLock /> : <FaLockOpen />}</Button>
+      <Button
+        onClick={() => setGraphActive(!graphActive)}
+        aria-label="Toggle graph lock/unlock"
+        title="Toggle graph lock/unlock"
+      >
+        {!graphActive ? <FaLock /> : <FaLockOpen />}
+      </Button>
     </Container>
   );
 });

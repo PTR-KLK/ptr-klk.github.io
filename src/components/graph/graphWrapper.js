@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from "react";
+import React, { Suspense } from "react";
 import styled from "styled-components";
 import { reveal } from "../reveal";
 
@@ -51,13 +51,12 @@ function fakeDelay(ms) {
 
 const GraphWrapper = ({ height, data }) => {
   const isSSR = typeof window === "undefined";
-  const [graphActive, setGraphActive] = useState(false);
 
   return (
-    <Container height={height} onClick={() => setGraphActive(!graphActive)}>
+    <Container height={height}>
       {!isSSR && (
         <Suspense fallback={<Fallback>Loading...</Fallback>}>
-          <Graph graphActive={graphActive} data={data} />
+          <Graph data={data} />
         </Suspense>
       )}
     </Container>
