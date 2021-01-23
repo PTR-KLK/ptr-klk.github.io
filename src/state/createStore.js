@@ -1,19 +1,37 @@
 import { createStore, compose } from "redux";
 
-const initialState = { graph: false, menuVisible: false };
+const initialState = {
+  graph: false,
+  menuVisible: false,
+  graphActive: false,
+  authorVisible: true,
+};
 
-const reducer = (state, action) => {
-  if (action.type === `TOGGLE_GRAPH`) {
-    return Object.assign({}, state, {
-      graph: !state.graph,
-    });
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case `TOGGLE_GRAPH`: {
+      return Object.assign({}, state, {
+        graph: !state.graph,
+      });
+    }
+    case `TOGGLE_MENU_VISIBLE`: {
+      return Object.assign({}, state, {
+        menuVisible: !state.menuVisible,
+      });
+    }
+    case `TOGGLE_GRAPH_ACTIVE`: {
+      return Object.assign({}, state, {
+        graphActive: !state.graphActive,
+      });
+    }
+    case `TOGGLE_AUTHOR_VISIBLE`: {
+      return Object.assign({}, state, {
+        authorVisible: !state.authorVisible,
+      });
+    }
+    default:
+      return state;
   }
-  if (action.type === `TOGGLE_MENU_VISIBLE`) {
-    return Object.assign({}, state, {
-      menuVisible: !state.menuVisible,
-    });
-  }
-  return state;
 };
 
 const initStore = () => {

@@ -1,15 +1,29 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { withTheme } from "styled-components";
 import Graph from "react-graph-vis";
-import { FaLock, FaLockOpen } from "react-icons/fa";
 import navigation from "./navigation/navigation";
 import createGraphData from "./createGraphData/createGraphData";
 import options from "./options/options";
-import { Container, Button } from "./graph.style";
+import { Container } from "./graph.style";
+import LockButton from "./lockButton/lockButton";
 
-const GraphComponent = withTheme(({ data, theme }) => {
+const mapStateToProps = ({ graphActive }) => {
+  return { graphActive };
+};
+
+const cursorStyle = (network) => {
+  network.on("hoverNode", function () {
+    network.canvas.body.container.style.cursor = "pointer";
+
+    network.on("blurNode", function () {
+      network.canvas.body.container.style.cursor = "default";
+    });
+  });
+};
+
+const GraphComponent = withTheme(({ data, theme, graphActive }) => {
   const [network, setNetwork] = useState({});
-  const [graphActive, setGraphActive] = useState(false);
   const graphData = createGraphData(data);
   const events = {
     select: navigation(graphData),
@@ -36,24 +50,12 @@ const GraphComponent = withTheme(({ data, theme }) => {
         events={events}
         getNetwork={(network) => {
           setNetwork(network);
-          network.on("hoverNode", function (params) {
-            network.canvas.body.container.style.cursor = "pointer";
-
-            network.on("blurNode", function (params) {
-              network.canvas.body.container.style.cursor = "default";
-            });
-          });
+          cursorStyle(network);
         }}
       />
-      <Button
-        onClick={() => setGraphActive(!graphActive)}
-        aria-label="Toggle graph lock/unlock"
-        title="Toggle graph lock/unlock"
-      >
-        {!graphActive ? <FaLock /> : <FaLockOpen />}
-      </Button>
+      <LockButton />
     </Container>
   );
 });
 
-export default GraphComponent;
+export default connect(mapStateToProps, null)(GraphComponent);

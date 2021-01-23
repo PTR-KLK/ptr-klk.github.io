@@ -1,9 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
 import { useStaticQuery, graphql } from "gatsby";
-import MdxContent from "../../mdxWrapper/mdxWrapper";
+import MdxWrapper from "../../mdxWrapper/mdxWrapper";
 import { Container, Image, Heading } from "./author.style";
 
-const Author = () => {
+const mapStateToProps = ({ authorVisible }) => {
+  return { authorVisible };
+};
+const Author = ({ authorVisible }) => {
   const {
     me,
     frontpage: {
@@ -31,14 +35,14 @@ const Author = () => {
     }
   `);
 
-  return (
+  return authorVisible ? (
     <Container>
-      <MdxContent body={frontpage.body}>
+      <MdxWrapper body={frontpage.body}>
         <Image fluid={me.childImageSharp.fluid} objectFit="cover" alt="" />
         <Heading>Hello!</Heading>
-      </MdxContent>
+      </MdxWrapper>
     </Container>
-  );
+  ) : null;
 };
 
-export default Author;
+export default connect(mapStateToProps, null)(Author);

@@ -16,6 +16,12 @@ export const Container = styled.section`
   p {
     margin: 0.5rem 0;
   }
+
+  @media (min-width: 360px) {
+    p {
+      margin: 1rem 0;
+    }
+  }
 `;
 
 export const Image = styled(Img)`

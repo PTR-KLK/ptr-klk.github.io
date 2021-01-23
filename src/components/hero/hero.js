@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { FaUserAlt, FaUserAltSlash } from "react-icons/fa";
 import Graph from "../graph/graphWrapper";
 import Author from "./author/author";
-import { Container, AuthorButton } from "./hero.style";
+import AuthorButton from "./authorButton/authorButton";
+import { Container } from "./hero.style";
 
 const Hero = () => {
-  const [authorVisible, setAuthorVisible] = useState(true);
-
   const {
     graph: { nodes: graph },
   } = useStaticQuery(graphql`
@@ -45,14 +43,8 @@ const Hero = () => {
   return (
     <Container>
       <Graph data={graph} />
-      {authorVisible ? <Author /> : null}
-      <AuthorButton
-        aria-label="Toggle author info"
-        title="Toggle author info"
-        onClick={() => setAuthorVisible(!authorVisible)}
-      >
-        {authorVisible ? <FaUserAlt /> : <FaUserAltSlash />}
-      </AuthorButton>
+      <Author />
+      <AuthorButton />
     </Container>
   );
 };

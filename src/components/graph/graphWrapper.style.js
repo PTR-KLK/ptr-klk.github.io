@@ -8,6 +8,7 @@ export const Container = styled.section`
   background: ${({ theme }) => theme.primary};
   display: flex;
   width: 100%;
+  box-shadow: 0 2px ${(props) => props.theme.secondary};
 
   p {
     align-self: center;
