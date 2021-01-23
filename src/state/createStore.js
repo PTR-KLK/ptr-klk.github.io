@@ -1,10 +1,29 @@
 import { createStore, compose } from "redux";
 
+const saveToLocalStorage = (state) => {
+  try {
+    const authorVisible = JSON.stringify(state.authorVisible);
+    localStorage.setItem("authorVisible", authorVisible);
+  } catch (e) {
+    console.warn(e);
+  }
+};
+
+const loadFromLocalStorage = () => {
+  try {
+    const authorVisible = localStorage.getItem("authorVisible");
+    if (authorVisible === null) return true;
+    return JSON.parse(authorVisible);
+  } catch (e) {
+    return true;
+  }
+};
+
 const initialState = {
   graph: false,
   menuVisible: false,
   graphActive: false,
-  authorVisible: true,
+  authorVisible: loadFromLocalStorage(),
 };
 
 const reducer = (state = initialState, action) => {
@@ -44,6 +63,8 @@ const initStore = () => {
       : (f) => f;
 
   const store = createStore(reducer, initialState, compose(devtools));
+
+  store.subscribe(() => saveToLocalStorage(store.getState()));
 
   return store;
 };
