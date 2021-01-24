@@ -4,7 +4,7 @@ export const Container = styled.footer`
   justify-content: center;
   width: 100%;
   padding: 1rem 0;
-  border-top: 2px solid ${(props) => props.theme.secondary};
+  box-shadow: 0 -2px ${(props) => props.theme.secondary};
 
   p {
     margin: 0;

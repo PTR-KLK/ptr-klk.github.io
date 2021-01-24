@@ -2,11 +2,13 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 
 export const Container = styled.nav`
+  position: relative;
+  z-index: 3;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   width: calc(100% - 1rem);
-  border-bottom: 2px solid ${(props) => props.theme.secondary};
+  box-shadow: 0 2px ${(props) => props.theme.secondary};
   padding: 0.5rem;
 
   @media (min-width: 425px) {

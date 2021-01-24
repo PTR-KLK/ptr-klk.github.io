@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import useWidth from "./useWidth/useWidth";
 import { toggleMenuVisible } from "../buttons.actions";
 
@@ -17,7 +17,7 @@ const MenuButton = ({ menuVisible, toggleMenuVisible }) => {
       title="Toggle menu"
       onClick={toggleMenuVisible}
     >
-      {menuVisible ? <FaChevronUp /> : <FaChevronDown />}
+      {menuVisible ? <FaChevronRight /> : <FaChevronLeft />}
     </button>
   ) : null;
 };

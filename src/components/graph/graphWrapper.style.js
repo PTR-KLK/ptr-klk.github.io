@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { reveal } from "./reveal/reveal";
 
 export const Container = styled.section`
-  height: calc(100vh - 3rem - 2px);
+  height: calc(100vh - 3rem);
   justify-content: center;
   border: none;
   background: ${({ theme }) => theme.primary};
