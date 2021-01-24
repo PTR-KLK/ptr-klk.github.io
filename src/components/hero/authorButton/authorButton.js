@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { FaUserAlt, FaUserAltSlash } from "react-icons/fa";
 import { Container } from "./authorButton.style";
+import { toggleAuthorVisible } from "../hero.actions";
 
 const mapStateToProps = ({ authorVisible }) => {
   return { authorVisible };
@@ -21,7 +22,7 @@ const AuthorButton = ({ authorVisible, toggleAuthorVisible }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleAuthorVisible: () => dispatch({ type: `TOGGLE_AUTHOR_VISIBLE` }),
+    toggleAuthorVisible: () => dispatch(toggleAuthorVisible()),
   };
 };
 

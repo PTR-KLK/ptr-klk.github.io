@@ -1,57 +1,6 @@
 import { createStore, compose } from "redux";
-
-const saveToLocalStorage = (state) => {
-  try {
-    const authorVisible = JSON.stringify(state.authorVisible);
-    localStorage.setItem("authorVisible", authorVisible);
-  } catch (e) {
-    console.warn(e);
-  }
-};
-
-const loadFromLocalStorage = () => {
-  try {
-    const authorVisible = localStorage.getItem("authorVisible");
-    if (authorVisible === null) return true;
-    return JSON.parse(authorVisible);
-  } catch (e) {
-    return true;
-  }
-};
-
-const initialState = {
-  graph: false,
-  menuVisible: false,
-  graphActive: false,
-  authorVisible: loadFromLocalStorage(),
-};
-
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case `TOGGLE_GRAPH`: {
-      return Object.assign({}, state, {
-        graph: !state.graph,
-      });
-    }
-    case `TOGGLE_MENU_VISIBLE`: {
-      return Object.assign({}, state, {
-        menuVisible: !state.menuVisible,
-      });
-    }
-    case `TOGGLE_GRAPH_ACTIVE`: {
-      return Object.assign({}, state, {
-        graphActive: !state.graphActive,
-      });
-    }
-    case `TOGGLE_AUTHOR_VISIBLE`: {
-      return Object.assign({}, state, {
-        authorVisible: !state.authorVisible,
-      });
-    }
-    default:
-      return state;
-  }
-};
+import { initialState, reducer } from "./reducer";
+import { saveToLocalStorage } from "./localStorage";
 
 const initStore = () => {
   const windowGlobal = typeof window !== "undefined" && window;

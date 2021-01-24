@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import useWidth from "./useWidth/useWidth";
+import { toggleMenuVisible } from "../buttons.actions";
 
 const mapStateToProps = ({ menuVisible }) => {
   return { menuVisible };
@@ -23,7 +24,7 @@ const MenuButton = ({ menuVisible, toggleMenuVisible }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleMenuVisible: () => dispatch({ type: `TOGGLE_MENU_VISIBLE` }),
+    toggleMenuVisible: () => dispatch(toggleMenuVisible()),
   };
 };
 
