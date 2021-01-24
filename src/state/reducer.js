@@ -1,7 +1,7 @@
 import { loadFromLocalStorage } from "./localStorage";
 
 export const initialState = {
-  graph: false,
+  graphVisible: false,
   menuVisible: false,
   graphActive: false,
   authorVisible: loadFromLocalStorage(),
@@ -13,10 +13,10 @@ export const reducer = (state = initialState, action) => {
       return { ...state, menuVisible: !state.menuVisible };
     }
     case `TOGGLE_GRAPH_VISIBLE`: {
-      return { ...state, graph: !state.graph };
+      return { ...state, graphVisible: action.payload };
     }
     case `TOGGLE_GRAPH_ACTIVE`: {
-      return { ...state, graphActive: !state.graphActive };
+      return { ...state, graphActive: action.payload };
     }
     case `TOGGLE_AUTHOR_VISIBLE`: {
       return { ...state, authorVisible: !state.authorVisible };

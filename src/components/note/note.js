@@ -7,11 +7,11 @@ import Graph from "../graph/graphWrapper";
 import Seo from "../seo/seo";
 import { connect } from "react-redux";
 
-const mapStateToProps = ({ graph }) => {
-  return { graph };
+const mapStateToProps = ({ graphVisible }) => {
+  return { graphVisible };
 };
 
-const Note = ({ data, graph }) => {
+const Note = ({ data, graphVisible }) => {
   const note = data.mdx;
 
   return (
@@ -20,7 +20,7 @@ const Note = ({ data, graph }) => {
         title={note.frontmatter.title}
         description={note.frontmatter.description}
       />
-      {graph ? <Graph data={[note]} /> : null}
+      {graphVisible ? <Graph data={[note]} /> : null}
       <Article data={note} />
       <References heading="In this note:" arr={note.outboundReferences} />
       <References heading="Reffered in:" arr={note.inboundReferences} />

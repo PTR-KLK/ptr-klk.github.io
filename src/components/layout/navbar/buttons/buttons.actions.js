@@ -1,6 +1,7 @@
-export const toggleGraphVisible = () => {
+export const toggleGraphVisible = (graphVisible) => {
   return {
     type: `TOGGLE_GRAPH_VISIBLE`,
+    payload: graphVisible,
   };
 };
 
