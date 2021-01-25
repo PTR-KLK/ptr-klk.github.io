@@ -1,20 +1,6 @@
 import { createStore, compose } from "redux";
-
-const initialState = { graph: false, menuVisible: false };
-
-const reducer = (state, action) => {
-  if (action.type === `TOGGLE_GRAPH`) {
-    return Object.assign({}, state, {
-      graph: !state.graph,
-    });
-  }
-  if (action.type === `TOGGLE_MENU_VISIBLE`) {
-    return Object.assign({}, state, {
-      menuVisible: !state.menuVisible,
-    });
-  }
-  return state;
-};
+import { initialState, reducer } from "./reducer";
+import { saveToLocalStorage } from "./localStorage";
 
 const initStore = () => {
   const windowGlobal = typeof window !== "undefined" && window;
@@ -26,6 +12,8 @@ const initStore = () => {
       : (f) => f;
 
   const store = createStore(reducer, initialState, compose(devtools));
+
+  store.subscribe(() => saveToLocalStorage(store.getState()));
 
   return store;
 };

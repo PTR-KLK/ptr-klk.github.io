@@ -1,36 +1,7 @@
-import React, { useState, Suspense } from "react";
-import styled from "styled-components";
-import { boxShadow } from "../boxShadow";
-import { reveal } from "../reveal";
+import React, { Suspense } from "react";
+import { Container, Fallback } from "./graphWrapper.style";
 
 const Graph = React.lazy(() => fakeDelay(500)(import("./graph")));
-
-const Container = styled.section`
-  height: 50vh;
-  justify-content: center;
-  margin: 1rem 0;
-  border: none;
-  background: ${({ theme }) => theme.primary};
-  display: flex;
-  width: 100%;
-  ${({ theme }) => boxShadow(theme)}
-
-  p {
-    align-self: center;
-    font-family: "Inconsolata", monospace;
-    background-color: ${(props) => props.theme.primary};
-  }
-
-  canvas:focus,
-  .vis-network:focus {
-    outline: none;
-  }
-`;
-
-const Fallback = styled.p`
-  font-size: 1.5rem;
-  animation: ${reveal} 250ms linear 250ms reverse forwards;
-`;
 
 // https://stackoverflow.com/questions/54158994/react-suspense-lazy-delay
 
@@ -46,13 +17,12 @@ function fakeDelay(ms) {
 
 const GraphWrapper = ({ height, data }) => {
   const isSSR = typeof window === "undefined";
-  const [graphActive, setGraphActive] = useState(false);
 
   return (
-    <Container height={height} onClick={() => setGraphActive(!graphActive)}>
+    <Container height={height}>
       {!isSSR && (
         <Suspense fallback={<Fallback>Loading...</Fallback>}>
-          <Graph graphActive={graphActive} data={data} />
+          <Graph data={data} />
         </Suspense>
       )}
     </Container>

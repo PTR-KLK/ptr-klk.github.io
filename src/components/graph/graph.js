@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
-import styled, { withTheme } from "styled-components";
+import { connect } from "react-redux";
+import { withTheme } from "styled-components";
 import Graph from "react-graph-vis";
-import navigation from "./components/navigation";
-import createGraphData from "./components/createGraphData";
-import options from "./components/options";
-import { reveal } from "../reveal";
+import navigation from "./navigation/navigation";
+import createGraphData from "./createGraphData/createGraphData";
+import options from "./options/options";
+import { Container } from "./graph.style";
+import LockButton from "./lockButton/lockButton";
 
-const Container = styled.figure`
-  animation: ${reveal} 250ms linear forwards;
-  opacity: 0;
-  position: relative;
-  margin: 0;
-  width: 100%;
-  height: auto;
+const mapStateToProps = ({ graphActive }) => {
+  return { graphActive };
+};
 
-  p {
-    position: absolute;
-    margin: 1rem;
-    bottom: 0;
-    left: 0;
-  }
-`;
+const cursorStyle = (network) => {
+  network.on("hoverNode", function () {
+    network.canvas.body.container.style.cursor = "pointer";
 
-const GraphComponent = withTheme(({ graphActive, data, theme }) => {
+    network.on("blurNode", function () {
+      network.canvas.body.container.style.cursor = "default";
+    });
+  });
+};
+
+const GraphComponent = withTheme(({ data, theme, graphActive }) => {
   const [network, setNetwork] = useState({});
   const graphData = createGraphData(data);
   const events = {
@@ -50,18 +50,12 @@ const GraphComponent = withTheme(({ graphActive, data, theme }) => {
         events={events}
         getNetwork={(network) => {
           setNetwork(network);
-          network.on("hoverNode", function (params) {
-            network.canvas.body.container.style.cursor = "pointer";
-
-            network.on("blurNode", function (params) {
-              network.canvas.body.container.style.cursor = "default";
-            });
-          });
+          cursorStyle(network);
         }}
       />
-      {!graphActive ? <p>Tap or click to zoom or move</p> : null}
+      <LockButton />
     </Container>
   );
 });
 
-export default GraphComponent;
+export default connect(mapStateToProps, null)(GraphComponent);

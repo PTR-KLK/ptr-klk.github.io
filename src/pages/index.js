@@ -1,23 +1,23 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout/layout";
-import Seo from "../components/seo";
-import Latest from "../components/latest/latest";
-import Graph from "../components/graph/graphWrapper";
-import Author from "../components/author";
+import Seo from "../components/seo/seo";
+import Hero from "../components/hero/hero";
+import List from "../components/list/list";
 
 const Home = ({ data }) => {
   const {
     site: { siteMetadata },
-    graph: { nodes: graph },
+    recommended: { edges: recommended },
+    latest: { edges: latest },
   } = data;
 
   return (
     <Layout>
       <Seo title="Index" description={siteMetadata.description} />
-      <Author />
-      <Latest />
-      <Graph data={graph} />
+      <Hero />
+      <List heading="Recommended notes:" list={recommended} />
+      <List heading="Latest updates:" list={latest} />
     </Layout>
   );
 };
@@ -30,29 +30,39 @@ export const query = graphql`
         description
       }
     }
-    graph: allMdx {
-      nodes {
-        id
-        frontmatter {
-          title
-        }
-        fields {
-          slug
-        }
-        outboundReferences {
-          ... on Mdx {
-            id
-            frontmatter {
-              title
-            }
+    latest: allMdx(
+      limit: 5
+      sort: { fields: frontmatter___last_modified, order: DESC }
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            description
+            date
+            last_modified
+          }
+          fields {
+            slug
           }
         }
-        inboundReferences {
-          ... on Mdx {
-            id
-            frontmatter {
-              title
-            }
+      }
+    }
+    recommended: allMdx(
+      filter: { frontmatter: { recommended: { eq: true } } }
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            description
+            date
+            last_modified
+          }
+          fields {
+            slug
           }
         }
       }
