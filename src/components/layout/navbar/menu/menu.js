@@ -1,10 +1,15 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "gatsby";
 import { Container } from "./menu.style";
 
-const Menu = ({ menuLinks, visible }) => {
+const mapStateToProps = ({ menuVisible }) => {
+  return { menuVisible };
+};
+
+const Menu = ({ menuLinks, menuVisible }) => {
   return (
-    <Container visible={visible}>
+    <Container visible={menuVisible}>
       {menuLinks.map((el) => (
         <Link key={el.name} to={el.link}>
           <p>{el.name}</p>
@@ -14,4 +19,4 @@ const Menu = ({ menuLinks, visible }) => {
   );
 };
 
-export default Menu;
+export default connect(mapStateToProps, null)(Menu);
