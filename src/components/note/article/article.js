@@ -1,15 +1,15 @@
 import React from "react";
-import MdxWrapper from "../../mdxWrapper/mdxWrapper";
+import MdWrapper from "../../mdWrapper/mdWrapper";
 import { Container } from "./article.style";
 import Header from "./header/header";
 
 const Article = ({ data }) => {
-  const { body, frontmatter } = data;
+  const { html, frontmatter } = data;
 
   return (
     <Container>
       <Header frontmatter={frontmatter} />
-      <MdxWrapper body={body} />
+      <MdWrapper html={html} />
     </Container>
   );
 };

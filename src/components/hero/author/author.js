@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useStaticQuery, graphql } from "gatsby";
-import MdxWrapper from "../../mdxWrapper/mdxWrapper";
+import MdWrapper from "../../mdWrapper/mdWrapper";
 import { Container, Image, Heading } from "./author.style";
 
 const mapStateToProps = ({ authorVisible }) => {
@@ -22,14 +22,14 @@ const Author = ({ authorVisible }) => {
           }
         }
       }
-      frontpage: allMdx(
+      frontpage: allMarkdownRemark(
         filter: { frontmatter: { title: { eq: "Frontpage" } } }
       ) {
         nodes {
           frontmatter {
             title
           }
-          body
+          html
         }
       }
     }
@@ -37,10 +37,10 @@ const Author = ({ authorVisible }) => {
 
   return authorVisible ? (
     <Container>
-      <MdxWrapper body={frontpage.body}>
+      <MdWrapper html={frontpage.html}>
         <Image fluid={me.childImageSharp.fluid} objectFit="cover" alt="" />
         <Heading>Hello!</Heading>
-      </MdxWrapper>
+      </MdWrapper>
     </Container>
   ) : null;
 };

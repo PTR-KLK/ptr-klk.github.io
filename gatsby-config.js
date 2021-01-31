@@ -99,10 +99,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: `gatsby-transformer-remark`,
       options: {
-        extensions: [`.mdx`, `.md`],
-        gatsbyRemarkPlugins: [
+        plugins: [
           {
             resolve: `gatsby-remark-double-brackets-link`,
             options: {
@@ -121,13 +120,23 @@ module.exports = {
             resolve: `gatsby-remark-prismjs`,
             options: {},
           },
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {},
+          },
         ],
       },
     },
     {
       resolve: `gatsby-transformer-markdown-references`,
       options: {
-        types: ["Mdx"],
+        types: ["MarkdownRemark"],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-catch-links`,
+      options: {
+        excludePattern: /(excluded-link|external)/,
       },
     },
     {

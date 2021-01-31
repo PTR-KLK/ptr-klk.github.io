@@ -30,7 +30,7 @@ export const query = graphql`
         description
       }
     }
-    latest: allMdx(
+    latest: allMarkdownRemark(
       limit: 5
       sort: { fields: frontmatter___last_modified, order: DESC }
     ) {
@@ -49,7 +49,7 @@ export const query = graphql`
         }
       }
     }
-    recommended: allMdx(
+    recommended: allMarkdownRemark(
       filter: { frontmatter: { recommended: { eq: true } } }
     ) {
       edges {
