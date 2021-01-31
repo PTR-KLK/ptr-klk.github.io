@@ -11,7 +11,7 @@ const createSlug = (node) => {
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === `Mdx`) {
+  if (node.internal.type === `MarkdownRemark`) {
     createNodeField({
       node,
       name: `slug`,
@@ -24,7 +24,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const result = await graphql(`
     query {
-      allMdx {
+      allMarkdownRemark {
         edges {
           node {
             fields {
@@ -35,7 +35,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `);
-  result.data.allMdx.edges.forEach(({ node }) => {
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
       component: path.resolve(`./src/components/note/note.js`),

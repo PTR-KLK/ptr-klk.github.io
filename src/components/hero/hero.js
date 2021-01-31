@@ -10,7 +10,7 @@ const Hero = () => {
     graph: { nodes: graph },
   } = useStaticQuery(graphql`
     query {
-      graph: allMdx {
+      graph: allMarkdownRemark {
         nodes {
           id
           frontmatter {
@@ -20,7 +20,7 @@ const Hero = () => {
             slug
           }
           outboundReferences {
-            ... on Mdx {
+            ... on MarkdownRemark {
               id
               frontmatter {
                 title
@@ -28,7 +28,7 @@ const Hero = () => {
             }
           }
           inboundReferences {
-            ... on Mdx {
+            ... on MarkdownRemark {
               id
               frontmatter {
                 title
